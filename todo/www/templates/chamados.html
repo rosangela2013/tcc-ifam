@@ -1,0 +1,14 @@
+<ion-view view-title="Meus Chamados">
+ <ion-content>
+ 	<div class="list">
+
+    <a class="item item-avatar" href="#" ng-repeat="chamado in chamados">
+      <img src="{{chamado.img}}">
+      <h2>{{chamado.titulo}}</h2>
+      <p>{{chamado.resumo}}</p>
+      <p>{{chamado.status}}</p>
+    </a>
+
+</div>
+ </ion-content>
+</ion-view>
