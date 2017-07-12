@@ -1,0 +1,13 @@
+
+/* ROSANGELA ALECRIM DE MELO */
+
+/* Centralizando imagem do app*/
+#centro{
+	width: 250px;
+	height: 100px;
+	background-position: center;
+	top:50%;
+	left:50%;
+	margin-top: 50px;
+	margin-left: 50px;  
+}

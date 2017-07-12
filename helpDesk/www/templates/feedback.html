@@ -1,0 +1,33 @@
+<ion-view view-title="Feedback">
+ <ion-content>
+
+<div class="card" style="margin:0;padding: 0;">
+        <div class="item item-text-wrap">
+                <div class="item item-avatar">
+          <img src="https://scontent.ffor2-1.fna.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/15823641_208018049659163_2387002030826468707_n.jpg?oh=57c9f0cd2253a4fe73363cdf4219e53c&oe=5913688D">
+          <h1>Daniela Alecrim </h1>
+          <p>daniela.alecrim2013@gmail.com</p>
+        </div>
+        </div>
+      </div>
+
+ 
+ 	<div class="list">
+
+    <a class="item item-avatar" href="#" ng-repeat="chamado in chamados">
+      <img src="{{chamado.img}}">
+      <h2>{{chamado.titulo}}</h2>
+      <p>{{chamado.resumo}}</p>
+      <p>{{chamado.status}}</p>
+    </a>
+
+     <a class="item item-avatar" href="#" ng-repeat="chamado in chamados">
+      <img src="{{chamado.img}}">
+      <h2>{{chamado.titulo}}</h2>
+      <p>{{chamado.resumo}}</p>
+      <p>{{chamado.status}}</p>
+    </a>
+
+</div>
+ </ion-content>
+</ion-view>
