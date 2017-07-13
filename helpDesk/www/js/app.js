@@ -62,6 +62,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+   .state('app.criar-chamados', {
+    url: '/criar-chamados',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/criar-chamados.html',
+        controller : 'PlaylistCtrl'
+      }
+    }
+  })
+
   .state('app.search', {
     url: '/search',
     views: {
@@ -120,6 +130,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.categoria', {
+    url: '/categoria',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/categoria.html',
+        controller : 'PlaylistCtrl'
+      }
+    }
+  })
+
+ .state('app.feedback', {
+    url: '/feedback',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/feedback.html',
+        controller : 'PlaylistCtrl'
+      }
+    }
+  })
+
   .state('app.chamados', {
     url: '/chamados',
     views: {
@@ -128,17 +158,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller : 'ChamadoCtrl'
       }
     }
-  })
-    .state('app.chamad', {
-    url: '/chamados',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/chamad.html',
-        controller : 'ChamadCtrl'
-      }
-    }
   });
-
+  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
 });
