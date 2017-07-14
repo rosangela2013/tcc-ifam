@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
     }*/
 
     if(loginData.username == login && loginData.password == senha){
-        $location.path("app/chamados");
+      $state.go("menu.chamados");
     }
 
     // Simulate a login delay. Remove this and replace with your login
@@ -62,16 +62,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
 .controller('EsqueceuSenhaCtrl', function($scope) {
  
 })
@@ -93,7 +83,4 @@ angular.module('starter.controllers', [])
 })
 .controller('ChamadCtrl', function($scope) {
  
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

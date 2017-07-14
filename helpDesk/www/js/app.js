@@ -28,8 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    templateUrl: 'templates/inicio.html'
   })
 
   .state('app.login', {
@@ -37,42 +36,99 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent' : {
         templateUrl : 'templates/login.html',
-        controller : 'PlaylistCtrl'
+        controller : 'AppCtrl'
       }
     }
   })
 
-  .state('app.senha', {
+  .state('app.cadastrar-conta', {
+    url: '/cadastrar-conta',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/cadastro.html',
+        controller : 'AppCtrl'
+      }
+    }
+  })
+
+  .state('app.esqueci-senha', {
     url: '/esqueci-senha',
     views: {
       'menuContent' : {
         templateUrl : 'templates/esqueci-senha.html',
-        controller : 'PlaylistCtrl'
+        controller : 'AppCtrl'
       }
     }
   })
 
-   .state('app.meus-chamados', {
-    url: '/meus-chamados',
+
+  .state('menu', {
+    url: '/menu',
+    abstract: true,
+    templateUrl: 'templates/menu.html'
+  })
+
+  .state('menu.chamados', {
+    url: '/chamados',
     views: {
       'menuContent' : {
-        templateUrl : 'templates/meus-chamados.html',
-        controller : 'PlaylistCtrl'
+        templateUrl : 'templates/chamados.html',
+        controller : 'ChamadoCtrl'
       }
     }
   })
 
-   .state('app.criar-chamados', {
+  .state('menu.configuracao', {
+    url: '/configuracao',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/configuracao.html',
+        controller : 'AppCtrl'
+      }
+    }
+  })
+
+  .state('menu.categoria', {
+    url: '/categoria',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/categoria.html',
+        controller : 'AppCtrl'
+      }
+    }
+  })
+
+  .state('menu.criar-chamados', {
     url: '/criar-chamados',
     views: {
       'menuContent' : {
         templateUrl : 'templates/criar-chamados.html',
-        controller : 'PlaylistCtrl'
+        controller : 'AppCtrl'
       }
     }
   })
 
-  .state('app.search', {
+  .state('menu.meus-chamados', {
+    url: '/meus-chamados',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/meus-chamados.html',
+        controller : 'AppCtrl'
+      }
+    }
+  })
+
+  .state('menu.feedback', {
+    url: '/feedback',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/feedback.html',
+        controller : 'AppCtrl'
+      }
+    }
+  })
+
+  .state('menu.search', {
     url: '/search',
     views: {
       'menuContent': {
@@ -81,85 +137,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
+  .state('menu.browse', {
       url: '/browse',
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html'
         }
       }
-    })
+    });
 
-  .state('app.playlists', {
-    url: '/playlists',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlists.html',
-        controller: 'PlaylistsCtrl'
-      }
-    }
-  })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  })
-
-  .state('app.contato', {
-    url: '/cadastro',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/cadastro.html',
-        controller : 'PlaylistCtrl'
-      }
-    }
-  })
-
-  .state('app.configuracao', {
-    url: '/configuracao',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/configuracao.html',
-        controller : 'PlaylistCtrl'
-      }
-    }
-  })
-
-  .state('app.categoria', {
-    url: '/categoria',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/categoria.html',
-        controller : 'PlaylistCtrl'
-      }
-    }
-  })
-
- .state('app.feedback', {
-    url: '/feedback',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/feedback.html',
-        controller : 'PlaylistCtrl'
-      }
-    }
-  })
-
-  .state('app.chamados', {
-    url: '/chamados',
-    views: {
-      'menuContent' : {
-        templateUrl : 'templates/chamados.html',
-        controller : 'ChamadoCtrl'
-      }
-    }
-  });
-  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
 });
