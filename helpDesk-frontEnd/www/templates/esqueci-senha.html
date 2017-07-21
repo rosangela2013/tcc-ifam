@@ -1,0 +1,33 @@
+<ion-view view-title=" ">
+  <ion-content>
+
+  <div class="col col-center text-center">
+    <h4 class="gray">Redefinição de senha</h4>
+  </div>
+
+   <form ng-submit="esqueci-senha()">
+    <div class="list">
+
+        <label class="item item-input item-stacked-label item-text-wrap">
+            <p class="secondary">Insira seu <b>e-mail</b> que você usou no cadastro. 
+             Nós mandaremos um e-mail e um link para você redefinir sua senha.</p>
+            <p class="msg primary"></p>
+            <span>
+                <strong>Endereço de e-mail</strong>
+            </span>
+                <input type="text" placeholder="daniela.alecrim@gmail.com">
+        </label>
+  
+        <label class="item">
+              <button class="button button-block button-positive" type="submit">ENVIAR</button>
+        </label>
+
+        <label class="item item-input item-stacked-label item-text-wrap">
+          <p class="primary">Se ainda precisa de ajuda, contate o 
+             <a id="password-link-support" class="what-is-spotify" target="_blank" href="/help/faq/account/password-reset/">Suporte da Rede Social Help Desk</a>. 
+          </p>
+        </label>
+    </div>
+   </form>
+  </ion-content>
+</ion-view>
