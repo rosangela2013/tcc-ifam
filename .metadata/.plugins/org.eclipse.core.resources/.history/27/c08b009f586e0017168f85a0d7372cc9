@@ -1,0 +1,12 @@
+package br.gv.sepro.alecrim;
+
+public class Turma {
+
+	public void matricular(String aluno) {
+		
+	}
+	
+public boolean estaMatriculado(String aluno) {
+		return false;
+	}
+}

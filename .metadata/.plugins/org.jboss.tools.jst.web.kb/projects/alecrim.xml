@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths/>
+ <validation>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource name="%1;" path="%0"/>
+  </core>
+  <el/>
+ </validation>
+ <aliases>
+  <alias
+   path="/alecrim/src/main/java/br/gv/sepro/alecrim/HelloWorld.java" value="%0"/>
+  <alias
+   path="/alecrim/src/test/java/br/gv/sepro/alecrim/HelloWorldTest.java" value="%1"/>
+ </aliases>
+ <includes/>
+ <uris/>
+</kb-project>

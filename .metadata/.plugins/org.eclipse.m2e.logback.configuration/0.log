@@ -1,0 +1,21 @@
+2017-07-21 12:09:20,883 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: br.com.exedemo:exemplo:0.0.1-SNAPSHOT @ C:\workspace_tcc2\demoiselle-exemplo\pom.xml.
+2017-07-21 12:09:32,435 [Worker-4] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /demoiselle-exemplo/src/main/java
+2017-07-21 12:09:32,436 [Worker-4] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /demoiselle-exemplo/src/main/resources
+2017-07-21 12:09:32,438 [Worker-4] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /demoiselle-exemplo/src/main/resources
+2017-07-21 12:09:32,440 [Worker-4] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /demoiselle-exemplo/src/test/java
+2017-07-21 12:09:32,440 [Worker-4] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /demoiselle-exemplo/src/test/resources
+2017-07-21 12:09:40,712 [Worker-4] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 30 sec
+2017-07-21 12:09:50,135 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-21 12:09:50,142 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2017-07-21 12:09:50,212 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-07-21 12:09:50,215 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-21 12:09:50,216 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2017-07-21 12:09:50,249 [Worker-9] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for demoiselle-exemplo
+2017-07-21 12:09:50,254 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for org.apache.maven.plugins:maven-clean-plugin:jar:2.5 is missing, no dependency information available
+2017-07-21 12:09:50,371 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-21 12:09:50,374 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources to WEB-INF
+2017-07-21 12:10:36,262 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-21 12:10:36,332 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 6 resources
+2017-07-21 12:10:36,341 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-07-21 12:10:36,343 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-21 12:10:36,344 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
