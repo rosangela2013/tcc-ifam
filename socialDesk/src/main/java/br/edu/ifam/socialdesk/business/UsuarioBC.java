@@ -2,7 +2,7 @@ package br.edu.ifam.socialdesk.business;
 
 import java.util.List;
 
-import br.edu.ifam.socialdesk.entity.Usuario;
+import br.edu.ifam.socialdesk.domain.Usuario;
 import br.edu.ifam.socialdesk.persistence.UsuarioDAO;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
@@ -14,5 +14,17 @@ public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 
 	public List<Usuario> find(String query) {
 		return getDelegate().find(query);
+	}
+
+	/**
+	 * Realiza a autenticação do usuário
+	 * 
+	 * @param email
+	 * @param senha
+	 * 
+	 * @return usuário logado
+	 */
+	public Usuario login(String email, String senha) {
+		return getDelegate().login(email, senha);
 	}
 }

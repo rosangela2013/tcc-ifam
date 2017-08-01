@@ -18,17 +18,17 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import br.edu.ifam.socialdesk.business.UsuarioBC;
-import br.edu.ifam.socialdesk.entity.Usuario;
+import br.edu.ifam.socialdesk.domain.Usuario;
+import br.edu.ifam.socialdesk.domain.dto.UsuarioDTO;
 import br.gov.frameworkdemoiselle.BadRequestException;
 import br.gov.frameworkdemoiselle.NotFoundException;
-import br.gov.frameworkdemoiselle.security.LoggedIn;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.Strings;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
 @Path("/usuarios")
 public class UsuarioREST {
-	
+
 	@Inject
 	private UsuarioBC bc;
 
@@ -44,6 +44,17 @@ public class UsuarioREST {
 		}
 
 		return result;
+	}
+
+	@POST
+	@Produces("application/json")
+	@Path("login")
+	public Response login(UsuarioDTO usuarioRequest) {
+		Usuario usuario = bc.login(usuarioRequest.getEmail(), usuarioRequest.getSenha());
+		if (usuario == null) {
+			return Response.status(404).build();
+		}
+		return Response.status(200).entity(usuario).build();
 	}
 
 	@GET
@@ -80,7 +91,7 @@ public class UsuarioREST {
 	}
 
 	@PUT
-//	@LoggedIn
+	// @LoggedIn
 	@Path("{id}")
 	@Transactional
 	@ValidatePayload
@@ -95,7 +106,7 @@ public class UsuarioREST {
 	}
 
 	@DELETE
-//	@LoggedIn
+	// @LoggedIn
 	@Path("{id}")
 	@Transactional
 	public void delete(@PathParam("id") Long id) throws Exception {
