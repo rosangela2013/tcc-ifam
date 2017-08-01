@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import br.edu.ifam.socialdesk.entity.Bookmark;
+import br.edu.ifam.socialdesk.domain.Bookmark;
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.frameworkdemoiselle.template.JPACrud;
 

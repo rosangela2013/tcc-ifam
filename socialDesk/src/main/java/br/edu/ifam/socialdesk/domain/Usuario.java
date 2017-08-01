@@ -1,37 +1,48 @@
-package br.edu.ifam.socialdesk.entity;
+package br.edu.ifam.socialdesk.domain;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import br.edu.ifam.socialdesk.domain.enums.Sexo;
 
 @Entity
 @Table(name = "USUARIO")
-public class Usuario {
-	/*Declarando variavéis*/
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	public Usuario() {
+
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
-	
-	@Column(name = "NOME")
-    private String nomeusuario ;
-	
-	@Column(name = "SOBRENOME")
-    private String sobrenome; 
-	
-	@Column(name = "EMAIL")
-    private String email;
-	
+
+	@Column(name = "NOME", nullable = false, length = 255)
+	private String nomeusuario;
+
+	@Column(name = "SOBRENOME", length = 255)
+	private String sobrenome;
+
+	@Column(name = "EMAIL", length = 255)
+	private String email;
+
 	@Column(name = "SEXO")
-    private String sexo;
-    
-    public Usuario() {
-		
-	}
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
+
+	@Column(name = "SENHA", length = 10)
+	private String senha;
 
 	public Long getId() {
 		return id;
@@ -65,14 +76,19 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
-	
-   
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 }

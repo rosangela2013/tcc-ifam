@@ -1,4 +1,4 @@
-package br.edu.ifam.socialdesk.entity;
+package br.edu.ifam.socialdesk.domain;
 
 
 import java.io.Serializable;

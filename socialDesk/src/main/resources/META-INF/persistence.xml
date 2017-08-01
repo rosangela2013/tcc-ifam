@@ -8,9 +8,14 @@
 	<persistence-unit name="socialDesk-ds" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:jboss/datasources/helpdesk-ds</non-jta-data-source>
 
-		<class>br.edu.ifam.socialdesk.entity.Bookmark</class>
-		<class>br.edu.ifam.socialdesk.entity.Usuario</class>
-		
+		<class>br.edu.ifam.socialdesk.domain.Bookmark</class>
+		<class>br.edu.ifam.socialdesk.domain.Usuario</class>
+		<class>br.edu.ifam.socialdesk.domain.Categoria</class>
+		<class>br.edu.ifam.socialdesk.domain.Status</class>
+		<class>br.edu.ifam.socialdesk.domain.FotoUsuario</class>
+		<class>br.edu.ifam.socialdesk.domain.ArquivoChamado</class>
+		<class>br.edu.ifam.socialdesk.domain.Chamado</class>
+		<class>br.edu.ifam.socialdesk.domain.Comentario</class>
 		
 		<properties>
 		   <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

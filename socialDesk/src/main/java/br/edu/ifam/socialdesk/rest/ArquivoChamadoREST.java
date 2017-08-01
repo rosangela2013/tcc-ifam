@@ -17,25 +17,24 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.edu.ifam.socialdesk.business.BookmarkBC;
-import br.edu.ifam.socialdesk.domain.Bookmark;
+import br.edu.ifam.socialdesk.business.ArquivoChamadoBC;
+import br.edu.ifam.socialdesk.domain.ArquivoChamado;
 import br.gov.frameworkdemoiselle.BadRequestException;
 import br.gov.frameworkdemoiselle.NotFoundException;
-import br.gov.frameworkdemoiselle.security.LoggedIn;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.Strings;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
-@Path("bookmark")
-public class BookmarkREST {
+@Path("/arquivoChamado")
+public class ArquivoChamadoREST {
 
 	@Inject
-	private BookmarkBC bc;
+	private ArquivoChamadoBC bc;
 
 	@GET
 	@Produces("application/json")
-	public List<Bookmark> find(@QueryParam("q") String query) throws Exception {
-		List<Bookmark> result;
+	public List<ArquivoChamado> find(@QueryParam("q") String query) throws Exception {
+		List<ArquivoChamado> result;
 
 		if (Strings.isEmpty(query)) {
 			result = bc.findAll();
@@ -49,8 +48,8 @@ public class BookmarkREST {
 	@GET
 	@Path("{id}")
 	@Produces("application/json")
-	public Bookmark load(@PathParam("id") Long id) throws Exception {
-		Bookmark result = bc.load(id);
+	public ArquivoChamado load(@PathParam("id") Long id) throws Exception {
+		ArquivoChamado result = bc.load(id);
 
 		if (result == null) {
 			throw new NotFoundException();
@@ -60,28 +59,33 @@ public class BookmarkREST {
 	}
 
 	@POST
-	@LoggedIn
 	@Transactional
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response insert(Bookmark body, @Context UriInfo uriInfo) throws Exception {
+	public Response insert(ArquivoChamado body, @Context UriInfo uriInfo) throws Exception {
 		checkId(body);
 
-		String id = bc.insert(body).getId().toString();
-		URI location = uriInfo.getRequestUriBuilder().path(id).build();
+		Long id = bc.insert(body).getId();
+		URI location = uriInfo.getRequestUriBuilder().path(id.toString()).build();
 
 		return Response.created(location).entity(id).build();
 	}
 
+	private void checkId(ArquivoChamado body) throws BadRequestException {
+		if (body.getId() != null) {
+			throw new BadRequestException();
+		}
+	}
+
 	@PUT
-	@LoggedIn
+	// @LoggedIn
 	@Path("{id}")
 	@Transactional
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
-	public void update(@PathParam("id") Long id, Bookmark body) throws Exception {
+	public void update(@PathParam("id") Long id, ArquivoChamado body) throws Exception {
 		checkId(body);
 		load(id);
 
@@ -90,7 +94,7 @@ public class BookmarkREST {
 	}
 
 	@DELETE
-	@LoggedIn
+	// @LoggedIn
 	@Path("{id}")
 	@Transactional
 	public void delete(@PathParam("id") Long id) throws Exception {
@@ -98,16 +102,4 @@ public class BookmarkREST {
 		bc.delete(id);
 	}
 
-	@DELETE
-	@LoggedIn
-	@Transactional
-	public void delete(List<Long> ids) throws Exception {
-		bc.delete(ids);
-	}
-
-	private void checkId(Bookmark entity) throws Exception {
-		if (entity.getId() != null) {
-			throw new BadRequestException();
-		}
-	}
 }

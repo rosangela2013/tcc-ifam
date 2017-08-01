@@ -2,7 +2,7 @@ package br.edu.ifam.socialdesk.business;
 
 import java.util.List;
 
-import br.edu.ifam.socialdesk.entity.Bookmark;
+import br.edu.ifam.socialdesk.domain.Bookmark;
 import br.edu.ifam.socialdesk.persistence.BookmarkDAO;
 import br.gov.frameworkdemoiselle.lifecycle.Startup;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;

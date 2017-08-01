@@ -33,7 +33,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ifam.socialdesk.entity.Bookmark;
+import br.edu.ifam.socialdesk.domain.Bookmark;
 import br.gov.frameworkdemoiselle.HttpViolationException;
 import br.gov.frameworkdemoiselle.UnprocessableEntityException;
 
