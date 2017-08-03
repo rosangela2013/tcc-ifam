@@ -27,4 +27,17 @@ public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 	public Usuario login(String email, String senha) {
 		return getDelegate().login(email, senha);
 	}
+
+	public Long save(Usuario usuario) {
+		Long id = null;
+
+		if (usuario.getId() == null) {
+			id = getDelegate().insert(usuario).getId();
+		} else {
+			id = getDelegate().update(usuario).getId();
+		}
+
+		return id;
+	}
+
 }

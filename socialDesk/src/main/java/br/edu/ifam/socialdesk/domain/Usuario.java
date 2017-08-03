@@ -1,6 +1,7 @@
 package br.edu.ifam.socialdesk.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Usuario implements Serializable {
 	private Long id;
 
 	@Column(name = "NOME", nullable = false, length = 255)
-	private String nomeusuario;
+	private String nomeUsuario;
 
 	@Column(name = "SOBRENOME", length = 255)
 	private String sobrenome;
@@ -44,6 +45,9 @@ public class Usuario implements Serializable {
 	@Column(name = "SENHA", length = 10)
 	private String senha;
 
+	@Column(name = "DATANASCIMENTO")
+	private Date dataNascimento;
+
 	public Long getId() {
 		return id;
 	}
@@ -52,12 +56,12 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public String getNomeusuario() {
-		return nomeusuario;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setNomeusuario(String nomeusuario) {
-		this.nomeusuario = nomeusuario;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
 	public String getSobrenome() {
@@ -91,4 +95,13 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 }

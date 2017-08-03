@@ -15,10 +15,10 @@ public class UsuarioDAO extends GenericDAO<Usuario, Long> {
 
 	public List<Usuario> find(String query) {
 
-		final String hql = "select u from Usuario u where u.nomeusuario like :nmUsuario";
+		final String hql = "select u from Usuario u order by u.nomeUsuario";
 
 		TypedQuery<Usuario> createQuery = getEntityManager().createQuery(hql, Usuario.class);
-		createQuery.setParameter("nmUsuario", "%" + query + "%");
+		// createQuery.setParameter("nmUsuario", "%" + query + "%");
 
 		return createQuery.getResultList();
 	}

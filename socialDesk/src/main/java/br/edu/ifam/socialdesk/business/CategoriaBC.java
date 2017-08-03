@@ -15,4 +15,5 @@ public class CategoriaBC extends DelegateCrud<Categoria, Long, CategoriaDAO> {
 	public List<Categoria> find(String query) {
 		return getDelegate().find(query);
 	}
+
 }

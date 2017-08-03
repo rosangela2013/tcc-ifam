@@ -45,6 +45,9 @@ public class Chamado implements Serializable {
 	@Column(name = "DATA_CRIACAO")
 	private Date dataCriacao;
 
+	@Column(name = "QUANTIDADE_LIKE")
+	private Long quantidadeLike;
+
 	public Long getId() {
 		return id;
 	}
@@ -93,4 +96,11 @@ public class Chamado implements Serializable {
 		this.dataCriacao = dataCriacao;
 	}
 
+	public Long getQuantidadeLike() {
+		return quantidadeLike;
+	}
+
+	public void setQuantidadeLike(Long quantidadeLike) {
+		this.quantidadeLike = quantidadeLike;
+	}
 }

@@ -25,7 +25,7 @@ public class Status implements Serializable {
 	private Long id;
 
 	@Column(name = "SIGLA", length = 1)
-	private String siglastatus;
+	private String siglaStatus;
 
 	@Column(name = "DESCRICAO")
 	private String descricao;
@@ -38,12 +38,12 @@ public class Status implements Serializable {
 		this.id = id;
 	}
 
-	public String getSiglastatus() {
-		return siglastatus;
+	public String getSiglaStatus() {
+		return siglaStatus;
 	}
 
-	public void setSiglastatus(String siglastatus) {
-		this.siglastatus = siglastatus;
+	public void setSiglaStatus(String siglaStatus) {
+		this.siglaStatus = siglaStatus;
 	}
 
 	public String getDescricao() {

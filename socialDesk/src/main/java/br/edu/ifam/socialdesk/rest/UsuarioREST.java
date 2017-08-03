@@ -23,7 +23,6 @@ import br.edu.ifam.socialdesk.domain.dto.UsuarioDTO;
 import br.gov.frameworkdemoiselle.BadRequestException;
 import br.gov.frameworkdemoiselle.NotFoundException;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
-import br.gov.frameworkdemoiselle.util.Strings;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 
 @Path("/usuarios")
@@ -37,11 +36,11 @@ public class UsuarioREST {
 	public List<Usuario> find(@QueryParam("q") String query) throws Exception {
 		List<Usuario> result;
 
-		if (Strings.isEmpty(query)) {
-			result = bc.findAll();
-		} else {
-			result = bc.find(query);
-		}
+		// if (Strings.isEmpty(query)) {
+		// result = bc.findAll();
+		// } else {
+		result = bc.find(query);
+		// }
 
 		return result;
 	}
@@ -75,10 +74,8 @@ public class UsuarioREST {
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response insert(Usuario body, @Context UriInfo uriInfo) throws Exception {
-		checkId(body);
-
-		Long id = bc.insert(body).getId();
+	public Response save(Usuario usuario, @Context UriInfo uriInfo) throws Exception {
+		Long id = bc.save(usuario);
 		URI location = uriInfo.getRequestUriBuilder().path(id.toString()).build();
 
 		return Response.created(location).entity(id).build();

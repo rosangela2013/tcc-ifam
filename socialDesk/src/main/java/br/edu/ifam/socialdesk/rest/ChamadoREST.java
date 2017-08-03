@@ -63,10 +63,8 @@ public class ChamadoREST {
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response insert(Chamado body, @Context UriInfo uriInfo) throws Exception {
-		checkId(body);
-
-		Long id = bc.insert(body).getId();
+	public Response save(Chamado chamado, @Context UriInfo uriInfo) throws Exception {
+		Long id = bc.save(chamado);
 		URI location = uriInfo.getRequestUriBuilder().path(id.toString()).build();
 
 		return Response.created(location).entity(id).build();
@@ -102,4 +100,14 @@ public class ChamadoREST {
 		bc.delete(id);
 	}
 
+	@GET
+	@Produces("application/json")
+	@Path("listPorCategoria/{idCategoria}")
+	public List<Chamado> listPorCategoria(@PathParam("idCategoria") Long idCategoria) throws Exception {
+		List<Chamado> result;
+
+		result = bc.listPorCategoria(idCategoria);
+
+		return result;
+	}
 }
