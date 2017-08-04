@@ -91,13 +91,28 @@ public class ChamadoREST {
 		bc.update(body);
 	}
 
+	@PUT
+	// @LoggedIn
+	@Path("fecharChamado/{idChamado}")
+	@Transactional
+	@Produces("application/json")
+	public Response fecharChamado(@PathParam("idChamado") Long idChamado) throws Exception {
+		try {
+			bc.fecharChamado(idChamado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Response.ok().build();
+	}
+
 	@DELETE
 	// @LoggedIn
 	@Path("{id}")
+	@Produces("application/json")
 	@Transactional
 	public void delete(@PathParam("id") Long id) throws Exception {
 		load(id);
-		bc.delete(id);
+		bc.excluirChamado(id);
 	}
 
 	@GET
@@ -110,4 +125,23 @@ public class ChamadoREST {
 
 		return result;
 	}
+
+	@GET
+	@Produces("application/json")
+	@Path("listPorUsuario/{idUsuario}")
+	public List<Chamado> listPorUsuario(@PathParam("idUsuario") Long idUsuario) throws Exception {
+		List<Chamado> result;
+		result = bc.listPorUsuario(idUsuario);
+		return result;
+	}
+
+	@GET
+	@Produces("application/json")
+	@Path("listPorNomeUsuario/{nomeUsuario}")
+	public List<Chamado> listPorNomeUsuario(@PathParam("nomeUsuario") String nomeUsuario) throws Exception {
+		List<Chamado> result;
+		result = bc.listPorNomeUsuario(nomeUsuario);
+		return result;
+	}
+
 }

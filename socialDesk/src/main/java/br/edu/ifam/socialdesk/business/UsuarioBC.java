@@ -12,6 +12,12 @@ public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Lista usuários
+	 * 
+	 * @param query
+	 * @return
+	 */
 	public List<Usuario> find(String query) {
 		return getDelegate().find(query);
 	}
@@ -22,12 +28,18 @@ public class UsuarioBC extends DelegateCrud<Usuario, Long, UsuarioDAO> {
 	 * @param email
 	 * @param senha
 	 * 
-	 * @return usuário logado
+	 * @return Usuário logado
 	 */
 	public Usuario login(String email, String senha) {
 		return getDelegate().login(email, senha);
 	}
 
+	/**
+	 * Inclusão de Usuário
+	 * 
+	 * @param usuario
+	 * @return
+	 */
 	public Long save(Usuario usuario) {
 		Long id = null;
 

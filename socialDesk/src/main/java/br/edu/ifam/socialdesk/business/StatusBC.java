@@ -15,4 +15,8 @@ public class StatusBC extends DelegateCrud<Status, Long, StatusDAO> {
 	public List<Status> find(String query) {
 		return getDelegate().find(query);
 	}
+
+	public Status getPorSigla(String siglaStatus) {
+		return getDelegate().getPorSigla(siglaStatus);
+	}
 }

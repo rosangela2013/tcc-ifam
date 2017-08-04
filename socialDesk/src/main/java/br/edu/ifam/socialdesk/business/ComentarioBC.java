@@ -15,4 +15,32 @@ public class ComentarioBC extends DelegateCrud<Comentario, Long, ComentarioDAO> 
 	public List<Comentario> find(String query) {
 		return getDelegate().find(query);
 	}
+
+	/**
+	 * Conta a quantidade de comentarios de um chamado
+	 * 
+	 * @param idChamado
+	 * @return
+	 */
+	public Long contarComentarios(Long idChamado) {
+		return getDelegate().contarComentarios(idChamado);
+	}
+
+	/**
+	 * Inclui/edita um comentário
+	 * 
+	 * @param comentario
+	 * @return
+	 */
+	public Long save(Comentario comentario) {
+		Long id = null;
+
+		if (comentario.getId() == null) {
+			id = getDelegate().insert(comentario).getId();
+		} else {
+			id = getDelegate().update(comentario).getId();
+		}
+
+		return id;
+	}
 }

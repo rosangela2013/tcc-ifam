@@ -15,4 +15,17 @@ public class ComentarioDAO extends GenericDAO<Comentario, Long> {
 		return null;
 	}
 
+	/**
+	 * Conta a quantidade de comentarios de um chamado
+	 * 
+	 * @param idChamado
+	 * @return
+	 */
+	public Long contarComentarios(Long idChamado) {
+		String hql = "select count(c) from Comentario c where c.chamado.id = :idChamado";
+		Long quantidadeComentarios = getEntityManager().createQuery(hql, Long.class)
+				.setParameter("idChamado", idChamado).getSingleResult();
+		return quantidadeComentarios;
+	}
+
 }

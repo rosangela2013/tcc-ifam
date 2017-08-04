@@ -30,6 +30,9 @@ public class Chamado implements Serializable {
 	@Column(name = "DESCRICAO")
 	private String descricao;
 
+	@Column(name = "DATA_CRIACAO")
+	private Date dataCriacao;
+
 	@ManyToOne
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
@@ -41,9 +44,6 @@ public class Chamado implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ID_STATUS")
 	private Status status;
-
-	@Column(name = "DATA_CRIACAO")
-	private Date dataCriacao;
 
 	@Column(name = "QUANTIDADE_LIKE")
 	private Long quantidadeLike;

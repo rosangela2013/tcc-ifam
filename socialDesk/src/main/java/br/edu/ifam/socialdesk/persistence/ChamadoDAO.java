@@ -35,4 +35,28 @@ public class ChamadoDAO extends GenericDAO<Chamado, Long> {
 		return createQuery.getResultList();
 	}
 
+	public List<Chamado> listPorUsuario(Long idUsuario) {
+
+		final String hql = "SELECT chamado FROM Chamado chamado WHERE chamado.status.siglaStatus = :statusAberto "
+				+ " AND chamado.usuario.id = :idUsuario ORDER BY chamado.dataCriacao ";
+
+		TypedQuery<Chamado> createQuery = getEntityManager().createQuery(hql, Chamado.class);
+		createQuery.setParameter("statusAberto", Constants.STATUS_ABERTO);
+		createQuery.setParameter("idUsuario", idUsuario);
+
+		return createQuery.getResultList();
+	}
+
+	public List<Chamado> listPorNomeUsuario(String nomeUsuario) {
+
+		final String hql = "SELECT chamado FROM Chamado chamado WHERE chamado.status.siglaStatus = :statusAberto "
+				+ " AND chamado.usuario.nomeUsuario like :nomeUsuario ORDER BY chamado.dataCriacao ";
+
+		TypedQuery<Chamado> createQuery = getEntityManager().createQuery(hql, Chamado.class);
+		createQuery.setParameter("statusAberto", Constants.STATUS_ABERTO);
+		createQuery.setParameter("nomeUsuario", "%" + nomeUsuario + "%");
+
+		return createQuery.getResultList();
+	}
+
 }
