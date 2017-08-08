@@ -19,6 +19,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.edu.ifam.socialdesk.business.ChamadoBC;
 import br.edu.ifam.socialdesk.domain.Chamado;
+import br.edu.ifam.socialdesk.domain.Comentario;
 import br.gov.frameworkdemoiselle.BadRequestException;
 import br.gov.frameworkdemoiselle.NotFoundException;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
@@ -93,6 +94,17 @@ public class ChamadoREST {
 
 	@PUT
 	// @LoggedIn
+	@Path("atualizaQtdeLike")
+	@Transactional
+	@ValidatePayload
+	@Produces("application/json")
+	@Consumes("application/json")
+	public void updateQtdeLike(Chamado chamado) throws Exception {
+		bc.updateQtdeLike(chamado);
+	}
+
+	@PUT
+	// @LoggedIn
 	@Path("fecharChamado/{idChamado}")
 	@Transactional
 	@Produces("application/json")
@@ -142,6 +154,16 @@ public class ChamadoREST {
 		List<Chamado> result;
 		result = bc.listPorNomeUsuario(nomeUsuario);
 		return result;
+	}
+
+	@POST
+	@Transactional
+	@Path("comentario")
+	@ValidatePayload
+	@Produces("application/json")
+	@Consumes("application/json")
+	public void saveComentario(Comentario comentario) throws Exception {
+		bc.saveComentario(comentario);
 	}
 
 }

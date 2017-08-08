@@ -2,6 +2,8 @@ package br.edu.ifam.socialdesk.persistence;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
 import br.edu.ifam.socialdesk.domain.Comentario;
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 
@@ -26,6 +28,22 @@ public class ComentarioDAO extends GenericDAO<Comentario, Long> {
 		Long quantidadeComentarios = getEntityManager().createQuery(hql, Long.class)
 				.setParameter("idChamado", idChamado).getSingleResult();
 		return quantidadeComentarios;
+	}
+
+	/**
+	 * Listar comentarios por idChamado.
+	 * 
+	 * @param idChamado
+	 * @return
+	 */
+	public List<Comentario> listarComentarios(Long idChamado) {
+
+		final String hql = "select c from Comentario c where c.chamado.id = :idChamado";
+
+		TypedQuery<Comentario> createQuery = getEntityManager().createQuery(hql, Comentario.class);
+		createQuery.setParameter("idChamado", idChamado);
+
+		return createQuery.getResultList();
 	}
 
 }

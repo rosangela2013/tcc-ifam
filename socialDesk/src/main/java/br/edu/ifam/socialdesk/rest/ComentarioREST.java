@@ -102,4 +102,17 @@ public class ComentarioREST {
 		bc.delete(id);
 	}
 
+	@GET
+	@Path("idChamado/{idChamado}")
+	@Produces("application/json")
+	public List<Comentario> listarComentarios(@PathParam("idChamado") Long idChamado) throws Exception {
+		List<Comentario> result = bc.listarComentarios(idChamado);
+
+		if (result == null) {
+			throw new NotFoundException();
+		}
+
+		return result;
+	}
+
 }

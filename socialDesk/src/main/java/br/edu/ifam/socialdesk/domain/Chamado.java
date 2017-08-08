@@ -103,4 +103,5 @@ public class Chamado implements Serializable {
 	public void setQuantidadeLike(Long quantidadeLike) {
 		this.quantidadeLike = quantidadeLike;
 	}
+
 }

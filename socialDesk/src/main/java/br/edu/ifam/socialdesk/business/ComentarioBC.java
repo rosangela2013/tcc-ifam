@@ -43,4 +43,15 @@ public class ComentarioBC extends DelegateCrud<Comentario, Long, ComentarioDAO> 
 
 		return id;
 	}
+
+	/**
+	 * Método resposavel por realizar consultar de comentarios por id chamado
+	 * 
+	 * @author Waldecleber
+	 * @param idChamado
+	 * @return
+	 */
+	public List<Comentario> listarComentarios(Long idChamado) {
+		return getDelegate().listarComentarios(idChamado);
+	}
 }

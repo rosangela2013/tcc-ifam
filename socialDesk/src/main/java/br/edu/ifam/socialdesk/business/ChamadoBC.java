@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.edu.ifam.socialdesk.constant.Constants;
 import br.edu.ifam.socialdesk.domain.Chamado;
+import br.edu.ifam.socialdesk.domain.Comentario;
 import br.edu.ifam.socialdesk.domain.Status;
 import br.edu.ifam.socialdesk.exception.BusinessException;
 import br.edu.ifam.socialdesk.persistence.ChamadoDAO;
@@ -41,7 +42,7 @@ public class ChamadoBC extends DelegateCrud<Chamado, Long, ChamadoDAO> {
 	}
 
 	/**
-	 * Listar chamados por usuário
+	 * Listar chamados por idUsuário
 	 * 
 	 * @param idUsuario
 	 */
@@ -114,4 +115,28 @@ public class ChamadoBC extends DelegateCrud<Chamado, Long, ChamadoDAO> {
 		return id;
 	}
 
+	/**
+	 * Metodo para inserir comentarios no chamado Adiciona os comentarios em um
+	 * arrayList e salva o objeto por cascade.
+	 * 
+	 * @param comentario
+	 */
+	public void saveComentario(Comentario comentario) {
+
+		comentarioBC.insert(comentario);
+
+	}
+
+	/**
+	 * Atualiza a quantidade de like de um Chamado
+	 * 
+	 * @param chamado
+	 */
+	public void updateQtdeLike(Chamado chamado) {
+		Chamado chamadoBanco = this.load(chamado.getId());
+		Long qtdeLikeAtualizada = chamadoBanco.getQuantidadeLike() + 1;
+		chamadoBanco.setQuantidadeLike(qtdeLikeAtualizada);
+		getDelegate().update(chamadoBanco);
+
+	}
 }
