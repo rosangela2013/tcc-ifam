@@ -8,6 +8,7 @@ appService.factory('ChamadoAPI', function($http, constants){
     api.listPorCategoria = listPorCategoria;
     api.listPorNomeUsuario = listPorNomeUsuario;
     api.excluir = excluir;
+    api.salvar = salvar;
     
     ///////////////////////////
 
@@ -28,20 +29,8 @@ appService.factory('ChamadoAPI', function($http, constants){
         return $http.delete(baseURL + "/"+id);
     }
 
-    return api;
-})
-.factory('CategoriaAPI', function($http, constants){
-     var api = {};
-    var baseURL = constants.BASE_URL + "/categoria";
-
-    ///////////////////////////
-    api.list = list;
-
-    ///////////////////////////
-
-
-    function list() {
-        return $http.get(baseURL);
+    function salvar(chamado) {
+        return $http.post(baseURL, chamado);
     }
 
     return api;

@@ -26,7 +26,7 @@
             <a ng-click="edit({{obj.chamado.id}})" class="subdued">Editar</a>
             <a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a>
             <a class="subdued">{{obj.chamado.status.descricao}}</a>
-           
+            <a class="subdued">{{obj.chamado.categoria.nomecategoria}}</a>
           </p>
         </div>
       </div>

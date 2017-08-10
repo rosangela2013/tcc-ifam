@@ -7,7 +7,7 @@ appService.factory("LoginAPI",
 			['$http','constants',function($http,constants){
 
 	var _login = function(credencial){
-		return $http.post(constants.BASE_URL +"/login",credencial);
+		return $http.post(constants.BASE_URL +"/auth/login",credencial);
 	};
 
 	// var _trocaSenha = function(credencial){

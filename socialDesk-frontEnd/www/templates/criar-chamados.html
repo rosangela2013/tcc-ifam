@@ -1,43 +1,41 @@
-<ion-view view-title="Criar Chamados">
- 
- <ion-content>
-  
-  <!-- <h1 class="title">CHAMADOS</h1> -->
-       <div class="list card">
-        <div class="item item-avatar">
-          <img src="img/rosangela.jpg">
-          
-          <h2>Rosangela Alecrim</h2>
-          <p>November 05, 1997</p>
-        </div>
+<ion-view view-title="Criar Chamado">
+    <ion-content>
+      <!-- <h1 class="title">CHAMADOS</h1> -->
+          <div class="list card">
+            <div class="item item-avatar">
+              <img src="img/rosangela.jpg">
+              
+              <h2>Rosangela Alecrim</h2>
+              <p>Agosto 05, 2017</p>
+            </div>
 
-        <div class="item item-body">
-        
-        <label class="item item-input">
-          <i class="ion-android-create placeholder-icon"></i>
-          <input type="text" placeholder="Publicando chamado...">
-        </label>
-        <div class="list">
+            <div class="item item-body">
+            
+            <label class="item item-input">
+              <i class="ion-android-create placeholder-icon"></i>
+              <input type="text" ng-model="chamado.descricao" placeholder="Publicando chamado...">
+            </label>
+    
+            <label class="item item-input item-stacked-label" >
+              <h2><strong>Categoria</strong> </h2>
+                 <ion-radio ng-model="chamado.idCategoria" value="1" >
+                     Hadware
+                  </ion-radio>
+                 <ion-radio ng-model="chamado.idCategoria" value="2">
+                     Software
+                 </ion-radio>
+            </label>
 
-          <a class="item item-icon-left" href="#">
-              <i class="icon ion-camera"></i>
-              Foto
-          </a>
-          <a class="item item-icon-left" href="#">
-              <i class="icon ion-videocamera"></i>
-              Vídeo
-          </a>
-        </div> 
-        </div>
-      </div>
-
- <div class="item item-button-right">
-    MELHORAR A POSICAO
-    <button class="button button-positive">
-      Publicar
-    </button>
-  </div>
-
-
- </ion-content>
+            <div class="list">
+                  <a class="item item-icon-left" href="#">
+                      <i class="icon ion-camera"></i>
+                      Foto
+                  </a>
+                  <a class="item item-icon-left" href="#">
+                      <i class="icon ion-videocamera"></i>
+                      Vídeo
+                  </a>
+            </div> 
+      <button class="button button-block button-positive" ng-click="salvar(chamado);" type="submit">PUBLICAR</button>      
+    </ion-content>
 </ion-view>

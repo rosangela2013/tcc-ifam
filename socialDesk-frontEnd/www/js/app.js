@@ -106,7 +106,7 @@ angular.module('starter', ['ionic','starter.config', 'starter.controllers','star
     views: {
       'menuContent' : {
         templateUrl : 'templates/criar-chamados.html',
-        controller : 'AppCtrl'
+        controller : 'ChamadoCtrl'
       }
     }
   })
@@ -129,25 +129,7 @@ angular.module('starter', ['ionic','starter.config', 'starter.controllers','star
         controller : 'AppCtrl'
       }
     }
-  })
-
-  .state('menu.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('menu.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    });
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');

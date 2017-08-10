@@ -1,61 +1,47 @@
 
-appCtrl.controller('AppCtrl', function($scope, $ionicModal, $timeout, $location, $state, LoginAPI) {
+appCtrl.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout, $location, $state, LoginAPI) {
 
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
+  // Crie o modo de login que usaremos mais tarde
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
+  
+  //Ativado no modo de login para fechá-lo 
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
 
-  // Open the login modal
+  // Abra o modo de login
   $scope.login = function() {
     // $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
+  // Execute a ação de login quando o usuário envia o formulário de login
   $scope.doLogin = function(loginData) {
     console.log("entrou1");
     LoginAPI.login(loginData).then(
       function(response) {
-        console.log("entrou2");
+         window.localStorage.setItem('usuario',JSON.stringify(response.data));
+         $state.go('menu.chamados');
+         
       }
-    );
+    ).catch(function(erro){
+    $ionicPopup.alert({
+            title: 'Erro',
+            template: erro.data
+          }).then(function(){
+            
+          });
+    });
 
-    // var login = 'teste';
-    // var senha = '123';
-
-    // if(!loginData){
-    //   alert("Preencha os campos para fazer o login");
-    // }
-
-    // if(!loginData.password || !loginData.username ){
-    //   alert("Preencha os campos ");
-    // }
-
-    // /*if(loginData.password  != senha){
-    //   alert("Senha invalido ");
-    // }
-
-    // if(loginData.login  != login){
-    //   alert("Login invalido ");
-    // }*/
-
-    // if(loginData.username == login && loginData.password == senha){
-    //   $state.go("menu.chamados");
-    // }
-
-    // // Simulate a login delay. Remove this and replace with your login
-    // // code if using a login system
-    // $timeout(function() {
-    //   $scope.closeLogin();
-    // }, 1000);
+  appCtrl
+.controller('EsqueceuSenhaCtrl', function($scope) {
+ 
+})
   };
 });
