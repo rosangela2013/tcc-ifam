@@ -2,6 +2,10 @@ package br.edu.ifam.socialdesk.security;
 
 import java.security.Principal;
 
+import javax.inject.Inject;
+
+import br.edu.ifam.socialdesk.business.UsuarioBC;
+import br.edu.ifam.socialdesk.domain.Usuario;
 import br.gov.frameworkdemoiselle.security.Credentials;
 import br.gov.frameworkdemoiselle.security.InvalidCredentialsException;
 import br.gov.frameworkdemoiselle.security.TokenAuthenticator;
@@ -11,18 +15,38 @@ public class AppAuthenticator extends TokenAuthenticator {
 
 	private static final long serialVersionUID = 1L;
 
+	@Inject
+	private UsuarioBC usuarioBC;
+
 	@Override
 	protected Principal customAuthentication() throws Exception {
 		Principal user = null;
 		final Credentials credentials = Beans.getReference(Credentials.class);
 		final String username = credentials.getUsername();
 
-		if (credentials.getPassword().equals("secret")) {
+		final Usuario usuario = usuarioBC.login(credentials.getUsername(), credentials.getPassword());
+
+		if (usuario != null) {
 			user = new Principal() {
+
+				@SuppressWarnings("unused")
+				public String getEmail() {
+					return usuario.getEmail();
+				}
+
+				@SuppressWarnings("unused")
+				public String getNome() {
+					return usuario.getNomeUsuario();
+				}
+
+				@SuppressWarnings("unused")
+				public Long getId() {
+					return usuario.getId();
+				}
 
 				@Override
 				public String getName() {
-					return username;
+					return null;
 				}
 			};
 

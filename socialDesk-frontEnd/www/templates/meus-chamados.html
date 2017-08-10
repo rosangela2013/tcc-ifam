@@ -1,0 +1,35 @@
+<ion-view view-title="Meus Chamados">
+ 
+ <ion-content>
+   <div class="list list-inset">
+  <label class="item item-input">
+    <i class="ion-android-create placeholder-icon"></i>
+    <input type="text" placeholder="Publicar algum chamado...">
+  </label>
+</div>
+  <!-- <h1 class="title"> MEUS CHAMADOS</h1> -->
+       <div class="list card" ng-repeat="obj in chamados" >
+        <div class="item item-avatar">
+          <img src="img/rosangela.jpg">
+          <h2>{{obj.chamado.usuario.nomeUsuario}}</h2>
+          <p>{{obj.chamado.dataCriacao | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+        </div>
+
+        <div class="item item-body">
+          <img class="full-image" ng-src="{{obj.urlArquivo}}">
+          <p>
+           {{obj.chamado.descricao}}
+          </p>
+          <p>          
+            <a ng-click="like({{obj.chamado.quatidade_like}})" class="subdued">{{obj.chamado.quantidadeLike}} {{obj.chamado.quantidadeLike > 1 ? 'Curtidas' : 'Curtir' }}</a>
+            <a ng-click="comentarios({{obj.chamado.id}})" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 1 ? 'Comentários' : 'Comentário'}}</a>
+            <a ng-click="edit({{obj.chamado.id}})" class="subdued">Editar</a>
+            <a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a>
+            <a class="subdued">{{obj.chamado.status.descricao}}</a>
+           
+          </p>
+        </div>
+      </div>
+ 
+ </ion-content>
+</ion-view>

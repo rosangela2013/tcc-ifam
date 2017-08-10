@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -18,7 +19,7 @@
 		<artifactId>demoiselle-rest-parent</artifactId>
 		<version>2.5.1</version>
 	</parent>
-	
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 	</build>
@@ -31,13 +32,8 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- Uncomment this dependency if you are using a JTA -->
-		<!--
-		<dependency>
-		    <groupId>br.gov.frameworkdemoiselle</groupId>
-		    <artifactId>demoiselle-jta</artifactId>
-		    <scope>compile</scope>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>br.gov.frameworkdemoiselle</groupId> <artifactId>demoiselle-jta</artifactId> 
+			<scope>compile</scope> </dependency> -->
 
 		<!-- Jackson dependencies -->
 		<dependency>
@@ -59,8 +55,16 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.3.4</version><!--$NO-MVN-MAN-VER$-->
+			<version>4.3.4</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>cors-filter</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+
 	</dependencies>
 </project>
