@@ -25,17 +25,16 @@
                      Software
                  </ion-radio>
             </label>
+ <div class="list">
 
-            <div class="list">
-                  <a class="item item-icon-left" href="#">
-                      <i class="icon ion-camera"></i>
+             <label>
+                <div class="item item-icon-left">
+                   <input type="file" id="foto" multiple accept="image/*" capture="camera" style="display:none" onchange="handleFiles(this.files)">
+                   <i class="icon ion-camera" id="foto"></i>
                       Foto
-                  </a>
-                  <a class="item item-icon-left" href="#">
-                      <i class="icon ion-videocamera"></i>
-                      Vídeo
-                  </a>
-            </div> 
+                </div>
+            </label>
+            </div>
       <button class="button button-block button-positive" ng-click="salvar(chamado);" type="submit">PUBLICAR</button>      
     </ion-content>
 </ion-view>
