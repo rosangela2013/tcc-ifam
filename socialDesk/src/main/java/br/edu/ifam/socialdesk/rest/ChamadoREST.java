@@ -19,8 +19,8 @@ import javax.ws.rs.core.UriInfo;
 import br.edu.ifam.socialdesk.business.ChamadoBC;
 import br.edu.ifam.socialdesk.domain.Chamado;
 import br.edu.ifam.socialdesk.domain.Comentario;
+import br.edu.ifam.socialdesk.domain.dto.ChamadoListaDTO;
 import br.edu.ifam.socialdesk.domain.dto.ChamadoDTO;
-import br.edu.ifam.socialdesk.domain.dto.CriarChamadoDTO;
 import br.gov.frameworkdemoiselle.BadRequestException;
 import br.gov.frameworkdemoiselle.NotFoundException;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
@@ -34,7 +34,7 @@ public class ChamadoREST {
 
 	@GET
 	@Produces("application/json")
-	public List<ChamadoDTO> find() throws Exception {
+	public List<ChamadoListaDTO> find() throws Exception {
 		return this.bc.find();
 	}
 
@@ -56,7 +56,7 @@ public class ChamadoREST {
 	@ValidatePayload
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response save(CriarChamadoDTO form, @Context UriInfo uriInfo) throws Exception {
+	public Response save(ChamadoDTO form, @Context UriInfo uriInfo) throws Exception {
 		Long id = bc.save(form.getChamado());
 		URI location = uriInfo.getRequestUriBuilder().path(id.toString()).build();
 
@@ -122,8 +122,8 @@ public class ChamadoREST {
 	@GET
 	@Produces("application/json")
 	@Path("listPorCategoria/{idCategoria}")
-	public List<ChamadoDTO> listPorCategoria(@PathParam("idCategoria") Long idCategoria) throws Exception {
-		List<ChamadoDTO> result;
+	public List<ChamadoListaDTO> listPorCategoria(@PathParam("idCategoria") Long idCategoria) throws Exception {
+		List<ChamadoListaDTO> result;
 
 		result = bc.listPorCategoria(idCategoria);
 
@@ -133,8 +133,8 @@ public class ChamadoREST {
 	@GET
 	@Produces("application/json")
 	@Path("listPorUsuario/{idUsuario}")
-	public List<ChamadoDTO> listPorUsuario(@PathParam("idUsuario") Long idUsuario) throws Exception {
-		List<ChamadoDTO> result;
+	public List<ChamadoListaDTO> listPorUsuario(@PathParam("idUsuario") Long idUsuario) throws Exception {
+		List<ChamadoListaDTO> result;
 		result = bc.listPorUsuario(idUsuario);
 		return result;
 	}

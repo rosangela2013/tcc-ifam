@@ -6,7 +6,7 @@ import br.edu.ifam.socialdesk.domain.Categoria;
 import br.edu.ifam.socialdesk.domain.Chamado;
 import br.edu.ifam.socialdesk.domain.Usuario;
 
-public class CriarChamadoDTO {
+public class ChamadoDTO {
 
 	@NotNull
 	private String descricao;
@@ -15,6 +15,8 @@ public class CriarChamadoDTO {
 	private Long idUsuario;
 	@NotNull
 	private Long idCategoria;
+
+	private byte[] foto;
 
 	public String getDescricao() {
 		return descricao;
@@ -40,6 +42,14 @@ public class CriarChamadoDTO {
 		this.idCategoria = idCategoria;
 	}
 
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
 	public Chamado getChamado() {
 		Chamado chamado = new Chamado();
 		chamado.setDescricao(getDescricao());
@@ -53,6 +63,11 @@ public class CriarChamadoDTO {
 			chamado.setUsuario(new Usuario());
 			chamado.getUsuario().setId(idUsuario);
 		}
+		/*
+		 * ArquivoChamado arquivoChamado = new ArquivoChamado(); if (this.foto
+		 * != null) { arquivoChamado.setFoto(getFoto());
+		 * arquivoChamado.setChamado(chamado); }
+		 */
 		return chamado;
 	}
 

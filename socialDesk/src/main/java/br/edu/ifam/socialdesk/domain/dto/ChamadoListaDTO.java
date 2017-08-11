@@ -2,16 +2,16 @@ package br.edu.ifam.socialdesk.domain.dto;
 
 import br.edu.ifam.socialdesk.domain.Chamado;
 
-public class ChamadoDTO {
+public class ChamadoListaDTO {
 
 	private Chamado chamado;
 	private Long qtdComentarios;
 	private String urlArquivo;
 
-	public ChamadoDTO() {
+	public ChamadoListaDTO() {
 	}
 
-	public ChamadoDTO(Chamado chamado, Long qtdComentarios, String urlArquivo) {
+	public ChamadoListaDTO(Chamado chamado, Long qtdComentarios, String urlArquivo) {
 		super();
 		this.chamado = chamado;
 		this.qtdComentarios = qtdComentarios;
