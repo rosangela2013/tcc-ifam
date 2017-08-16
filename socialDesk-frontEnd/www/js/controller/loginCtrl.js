@@ -23,7 +23,7 @@ appCtrl.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout
 
   // Execute a ação de login quando o usuário envia o formulário de login
   $scope.doLogin = function(loginData) {
-    console.log("entrou1");
+    console.log(loginData);
     LoginAPI.login(loginData).then(
       function(response) {
          window.localStorage.setItem('usuario',JSON.stringify(response.data));
@@ -32,7 +32,7 @@ appCtrl.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout
       }
     ).catch(function(erro){
     $ionicPopup.alert({
-            title: 'Erro',
+            // title: 'Usuário ou senha inválidos ',
             template: erro.data
           }).then(function(){
             

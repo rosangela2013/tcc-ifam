@@ -1,5 +1,5 @@
 
-appService.factory('ChamadoAPI', function($http, constants){
+appService.factory('ChamadoAPI', function($http, constants, Upload){
     var api = {};
     var baseURL = constants.BASE_URL + "/chamado";
 
@@ -30,7 +30,15 @@ appService.factory('ChamadoAPI', function($http, constants){
     }
 
     function salvar(chamado) {
-        return $http.post(baseURL, chamado);
+      
+        return Upload.upload({
+                url: baseURL,
+                data: chamado
+        });
+    };
+
+    function salvarArquivoChamado(arquivoChamado){
+        return  $http.post(constants.BASE_URL + "/arquivoChamado", arquivoChamado);
     }
 
     return api;

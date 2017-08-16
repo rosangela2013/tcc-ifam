@@ -1,5 +1,38 @@
+<ion-view view-title=" Chamados">
+  <ion-content>
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    
+    <ion-header-bar>
+        <button class="button button-icon icon ion-ios-close-outline" 
+        ng-click="closeModal()"></button><h1 class="title">Comentários</h1>
+     
+    </ion-header-bar>
+    <ion-content>
+        <!-- <h1 class="title">COMENTARIOS</h1> -->
+        <div class="list card"  ng-repeat="obj in chamados">
+            
+             <div class="item item-avatar">
+               <img src="img/ROSANGELA.jpg">
+               <h2>{{obj.usuario.nomeUsuario}}</h2>
+               <p>{{obj.chamado.dataCriacao | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+             </div>
+     
+             <div class="item item-body">
+                <!-- <div align="right"> <strong><a class="subdued" >{{obj.chamado.categoria.nomecategoria}}</a></strong></div>
+               <img class="full-image" src="{{obj.urlArquivo}}"> -->
+               
+               <p>
+                {{obj}}
+               </p>   
+               <div style="word-spacing: 7px;">
+               <p>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<ion-content>
 <ion-view view-title="Chamados">
- <ion-content>
     <!-- INPUT ICONS -->
    <div class="list list-inset">
   <label class="item item-input">
@@ -11,7 +44,7 @@
        <div class="list card"  ng-repeat="obj in chamados">
        
         <div class="item item-avatar">
-          <img src="img/geison.jpg">
+          <img src="img/rosangela1.jpg">
           <h2>{{obj.chamado.usuario.nomeUsuario}}</h2>
           <p>{{obj.chamado.dataCriacao | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
         </div>
@@ -26,13 +59,13 @@
           <div style="word-spacing: 7px;">
           <p>
             <strong><a ng-click="like({{obj.chamado.quatidade_like}})" class="subdued">{{obj.chamado.quantidadeLike}} {{obj.chamado.quantidadeLike > 1 ? 'Curtidas' : 'Curtir' }}</a></strong>
-            <strong><a ng-click="comentarios({{obj.chamado.id}})" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 1 ? 'Comentários' : 'Comentário'}}</a></strong>
+            <strong><a ng-click="openModal();" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 1 ? 'Comentários' : 'Comentar'}}</a></strong>
             <strong><a ng-if="obj.chamado.usuario.id == 1" ng-click="edit({{obj.usuario.id}})" class="subdued">Editar</a></strong>
             <strong><a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a></strong>
             <strong><a class="subdued">{{obj.chamado.status.descricao}}</a></strong>
           </p>
         </div>
       </div>
-     
  </ion-content>
+</ion-content>
 </ion-view>

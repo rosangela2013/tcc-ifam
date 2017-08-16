@@ -1,4 +1,4 @@
-appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopup, ChamadoAPI){
+appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopup, ChamadoAPI, $ionicModal){
 
   $scope.chamados = [];
   init();
@@ -16,6 +16,7 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     $location.path("/menu/criar-chamados");
   }
 
+  
   $scope.salvar = function(chamado) {
     var usuario = JSON.parse(localStorage.usuario);
     chamado.idUsuario = usuario.id;
@@ -23,7 +24,8 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
      ChamadoAPI.salvar(chamado)
        .then(
       function(response) {
-          $state.go('menu.chamados');
+          //$state.go('menu.chamados');
+         
       }
     ).catch(function(erro){
     $ionicPopup.alert({
@@ -39,5 +41,34 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     ChamadoAPI.excluir(id)
       .then(init);
   }
+
+  $scope.handleFiles = function(foto){
+    ChamadoAPI.salvarArquivoChamado(chamado.foto);
+  }
+
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  // Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
 
 })
