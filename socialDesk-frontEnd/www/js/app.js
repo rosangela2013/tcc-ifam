@@ -7,7 +7,7 @@ var appService = angular.module('starter.services', []);
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic','starter.config', 'starter.controllers','starter.services','ngFileUpload'])
+angular.module('starter', ['ionic','starter.config', 'starter.controllers','starter.services','naif.base64'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

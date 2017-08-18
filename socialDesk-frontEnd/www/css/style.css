@@ -13,7 +13,7 @@
 }
 
 /* Estilo do radio SEXO*/
-}
+
 body {
   cursor: url("https://ionicframework.com/img/finger.png"), auto;
 }
@@ -54,5 +54,14 @@ body {
 	font-weight: bold;
 	padding-left: 2px;
 	content: '*';
+}
+.medium-image {
+  max-width:90%; 
+  max-height: 90%;
+  background-position: center;
+}
+
+.text-center {
+  text-align: center;
 }
 

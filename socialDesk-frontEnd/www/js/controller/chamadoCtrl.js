@@ -5,8 +5,10 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
 
   $scope.chamado = {};
 
+  $scope.arquivo = {};
+
   function init() {
-    ChamadoAPI.list()
+     ChamadoAPI.list()
     .then(function(response){
       $scope.chamados = response.data;
     });
@@ -16,12 +18,17 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     $location.path("/menu/criar-chamados");
   }
 
+  $scope.getImage = function(data){
+    return 'data:image/jpeg;base64,' + data;
+ }
+
   
-  $scope.salvar = function(chamado) {
+  $scope.salvar = function(arquivo) {
     var usuario = JSON.parse(localStorage.usuario);
-    chamado.idUsuario = usuario.id;
-     
-     ChamadoAPI.salvar(chamado)
+    $scope.chamado.idUsuario = usuario.id;
+
+     $scope.chamado.foto = arquivo.base64;
+     ChamadoAPI.salvar($scope.chamado)
        .then(
       function(response) {
           //$state.go('menu.chamados');
@@ -42,9 +49,9 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
       .then(init);
   }
 
-  $scope.handleFiles = function(foto){
+  /*$scope.handleFiles = function(foto){
     ChamadoAPI.salvarArquivoChamado(chamado.foto);
-  }
+  }*/
 
   $ionicModal.fromTemplateUrl('my-modal.html', {
     scope: $scope,

@@ -25,16 +25,15 @@
                      Software
                  </ion-radio>
             </label>
- <div class="list">
-
-             <label>
+            <div class="list">
                 <div class="item item-icon-left">
-                   <input type="file" id="foto" name="" ngf-select multiple accept="image/*" style="display:none" ng-model="chamado.foto">
-                   <i class="icon ion-camera" id="foto"></i>
-                      Foto
+                  <label for="selecao-arquivo" >
+                    <i class="icon ion-camera" id="foto"></i>
+                     <label onclick="document.getElementById('selecao-arquivo').click()">Inserir imagem</label>
+                  </label>
+                   <input type="file" id="selecao-arquivo" ng-model="arquivo" style="display: none;" base-sixty-four-input>
                 </div>
-            </label>
             </div>
-      <button class="button button-block button-positive" ng-click="salvar(chamado);" type="submit">PUBLICAR</button>      
+      <button class="button button-block button-positive" ng-click="salvar(arquivo);" type="submit">PUBLICAR</button>      
     </ion-content>
 </ion-view>
