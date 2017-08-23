@@ -33,7 +33,7 @@ appCtrl.controller('AppCtrl', function($scope, $ionicModal,$ionicPopup, $timeout
     ).catch(function(erro){
     $ionicPopup.alert({
             // title: 'Usuário ou senha inválidos ',
-            template: erro.data
+            template: erro.status
           }).then(function(){
             
           });

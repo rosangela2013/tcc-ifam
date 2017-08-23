@@ -59,7 +59,8 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
   }).then(function(modal) {
     $scope.modal = modal;
   });
-  $scope.openModal = function() {
+  $scope.openModal = function(listComentario) {
+    $scope.listComentario = listComentario;
     $scope.modal.show();
   };
   $scope.closeModal = function() {
