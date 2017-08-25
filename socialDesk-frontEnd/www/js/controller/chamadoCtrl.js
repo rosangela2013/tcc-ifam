@@ -31,7 +31,7 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
      ChamadoAPI.salvar($scope.chamado)
        .then(
       function(response) {
-          //$state.go('menu.chamados');
+          $state.go('menu.chamados');
          
       }
     ).catch(function(erro){

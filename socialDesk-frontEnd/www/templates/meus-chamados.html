@@ -23,7 +23,7 @@
            {{obj.chamado.descricao}}
           </p>
           <p>          
-            <a ng-click="like({{obj.chamado.quatidade_like}})" class="subdued">{{obj.chamado.quantidadeLike}} {{obj.chamado.quantidadeLike > 1 ? 'Curtidas' : 'Curtir' }}</a>
+            <a ng-click="like({{obj.chamado.quatidade_like}})" class="subdued">{{obj.chamado.quantidadeCurtida}} {{obj.chamado.quantidadeCurtida > 1 ? 'Curtidas' : 'Curtir' }}</a>
             <a ng-click="comentarios({{obj.chamado.id}})" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 1 ? 'Comentários' : 'Comentário'}}</a>
             <a ng-click="edit({{obj.chamado.id}})" class="subdued">Editar</a>
             <a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a>
