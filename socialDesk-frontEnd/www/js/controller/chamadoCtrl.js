@@ -1,4 +1,4 @@
-appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopup, ChamadoAPI, $ionicModal){
+appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopup, ChamadoAPI, FotoUsuarioAPI, $ionicModal){
 
   $scope.chamados = [];
   init();
@@ -7,10 +7,24 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
 
   $scope.arquivo = {};
 
+  $scope.listComentario = {};
+
   function init() {
+    $scope.loading = true;
+    $scope.dataAtual = new Date();
+    var usuario = JSON.parse(localStorage.usuario);
+    $scope.usuarioLogado = usuario;
+    //Recupera foto de usuário através do parâmetro usuario.id;
+    FotoUsuarioAPI.getByUsuario(usuario.id)
+    .then(function(response){
+      $scope.fotoUsuarioLogado = response.data;
+    });
+    
+
      ChamadoAPI.list()
     .then(function(response){
       $scope.chamados = response.data;
+      $scope.loading = false;
     });
   }
 
@@ -19,7 +33,12 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
   }
 
   $scope.getImage = function(data){
-    return 'data:image/jpeg;base64,' + data;
+    if (data){
+      return 'data:image/jpeg;base64,' + data;
+    } else {
+     //Corrigir retorno
+      return false;
+    }
  }
 
   
@@ -44,6 +63,37 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     });
   }
 
+  $scope.salvarComentario = function(comentario) {
+    var usuario = JSON.parse(localStorage.usuario);    
+    $scope.comentario = comentario;
+    $scope.comentario.usuario = {}; 
+    $scope.comentario.usuario.id = usuario.id;
+
+    ChamadoAPI.salvarComentario($scope.comentario)
+       .then(
+      function(response) {
+        console.log("$scope.comentario.chamado.id: " + $scope.comentario.chamado.id);
+        ChamadoAPI.load($scope.comentario.chamado.id)
+        .then(
+          function(response) {
+            $scope.listComentario = response.data.listComentario;
+          }
+        );
+        //Ajustar atualização de listagem de comentários
+         // $state.go('menu.chamados');
+         
+      }
+    ).catch(function(erro){
+    $ionicPopup.alert({
+            title: 'Erro',
+            template: erro.data[0].message
+          }).then(function(){
+            
+          });
+    });
+  }
+  
+
    $scope.excluir = function(id) {
     ChamadoAPI.excluir(id)
       .then(init);
@@ -59,8 +109,10 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
   }).then(function(modal) {
     $scope.modal = modal;
   });
-  $scope.openModal = function(listComentario) {
+  $scope.openModal = function(listComentario,chamado) {
     $scope.listComentario = listComentario;
+    $scope.comentario = {};
+    $scope.comentario.chamado = chamado;
     $scope.modal.show();
   };
   $scope.closeModal = function() {

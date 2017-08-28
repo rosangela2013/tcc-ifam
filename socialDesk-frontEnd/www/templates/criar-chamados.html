@@ -3,17 +3,16 @@
       <!-- <h1 class="title">CHAMADOS</h1> -->
           <div class="list card">
             <div class="item item-avatar">
-              <img src="img/rosangela.jpg">
+              <img ng-if="fotoUsuarioLogado" ng-src="{{getImage(fotoUsuarioLogado.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
               
-              <h2>Rosangela Alecrim</h2>
-              <p>Agosto 05, 2017</p>
+              <h2>{{usuarioLogado.nome}}</h2>
+              <p>{{dataAtual | date: 'dd/MM/yyyy'}}</p>
             </div>
 
             <div class="item item-body">
             
             <label class="item item-input">
-              <i class="ion-android-create placeholder-icon"></i>
-              <input type="text" ng-model="chamado.descricao" placeholder="Publicando chamado...">
+              <textarea ng-model="chamado.descricao" rows="7" placeholder="Publicando chamado..."></textarea>
             </label>
     
             <label class="item item-input item-stacked-label" >
