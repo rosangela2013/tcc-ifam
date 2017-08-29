@@ -10,7 +10,10 @@ appService.factory('ChamadoAPI', function($http, constants){
     api.listPorNomeUsuario = listPorNomeUsuario;
     api.excluir = excluir;
     api.salvar = salvar;
+    api.atualizar = atualizar;
     api.salvarComentario = salvarComentario;
+    api.loadComComentarios = loadComComentarios;
+    api.atualizaQtdeLike = atualizaQtdeLike;
     
     ///////////////////////////
 
@@ -32,7 +35,7 @@ appService.factory('ChamadoAPI', function($http, constants){
     }
 
     function listPorNomeUsuario(nomeUsuario) {
-        return $http.get(baseURL + "/listPorNomeUsuario/"+nomeUsuario)
+        return $http.get(baseURL + "/listPorNomeUsuario/"+nomeUsuario);
     }
 
     function excluir(id) {
@@ -43,6 +46,10 @@ appService.factory('ChamadoAPI', function($http, constants){
         return $http.post(baseURL, chamado);
     };
 
+    function atualizar(idChamado, chamado) {
+        return $http.put(baseURL + "/" + idChamado, chamado);
+    };
+
     function salvarArquivoChamado(arquivoChamado){
         return  $http.post(constants.BASE_URL + "/arquivoChamado", arquivoChamado);
     };
@@ -51,6 +58,9 @@ appService.factory('ChamadoAPI', function($http, constants){
         return $http.post(baseURL + "/comentario", comentario);
     };
 
+    function atualizaQtdeLike(chamado) {
+        return $http.put(baseURL + "/atualizaQtdeLike", chamado);
+    };
 
     return api;
 });

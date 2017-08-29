@@ -19,14 +19,15 @@
 
             <div class="list card" ng-repeat="obj in listComentario">
                 <div class="item item-avatar">
-                  <img ng-src="{{getImage(obj.urlFoto)}}" onerror="this.src ='img/no-photo.png'">
+                  <img ng-src="{{getImage(obj.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
                   <h2>{{obj.usuario.nomeUsuario}}</h2>
+                  <p>{{obj.dataComentario | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
                 </div>
                 <div class="item item-body">
                   <p class="text-justify">{{obj.descricao}}</p> 
                 </div>
              </div>
-<!--
+          <!--
             <div class="list card" ng-repeat="obj in listComentario">             
                   <p class="text-justify">{{obj.descricao}}</p>              
             </div>
@@ -68,9 +69,9 @@
       </p>   
       <!-- <div style="word-spacing: 7px;"> -->
       <p>
-        <a ng-click="like({{obj.chamado.quantidadeCurtida}})" class="subdued">{{obj.chamado.quantidadeCurtida}} {{obj.chamado.quantidadeCurtida > 1 ? 'Curtidas' : 'Curtir' }}</a>
-        <a ng-click="openModal(obj.listComentario,obj.chamado);" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 1 ? 'Comentários' : 'Comentar'}}</a>
-        <a ng-if="obj.chamado.usuario.id == 1" ng-click="edit({{obj.usuario.id}})" class="subdued">Editar</a>
+        <a ng-click="atualizaQtdeLike({{obj.chamado}})" class="subdued">{{obj.chamado.quantidadeCurtida}} {{obj.chamado.quantidadeCurtida > 1 ? 'Curtidas' : 'Curtir' }}</a>
+        <a ng-click="openModal(obj.listComentario,obj.chamado);" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 0 ? 'Comentário(s)' : 'Comentar'}}</a>
+        <a ng-if="obj.chamado.usuario.id == 1" ng-click="edit({{obj.chamado.id}})" class="subdued">Editar</a>
         <a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a>
         <a class="subdued">{{obj.chamado.status.descricao}}</a>
       </p>

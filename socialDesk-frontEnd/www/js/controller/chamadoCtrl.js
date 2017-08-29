@@ -5,6 +5,7 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
 
   $scope.chamado = {};
 
+  
   $scope.arquivo = {};
 
   $scope.listComentario = {};
@@ -28,21 +29,28 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     });
   }
 
+  $scope.atualizaQtdeLike = function(chamado) {
+    ChamadoAPI.atualizaQtdeLike(chamado)
+    .then(
+      init
+    );
+  }
+
   $scope.edit = function(id) {
-    $location.path("/menu/criar-chamados");
+    $location.path("/menu/criar-chamados/"+id);
   }
 
   $scope.getImage = function(data){
     if (data){
       return 'data:image/jpeg;base64,' + data;
     } else {
-     //Corrigir retorno
+     //TODO Corrigir retorno
       return false;
     }
  }
 
   
-  $scope.salvar = function(arquivo) {
+  /* $scope.salvar = function(arquivo) {
     var usuario = JSON.parse(localStorage.usuario);
     $scope.chamado.idUsuario = usuario.id;
 
@@ -61,7 +69,7 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
             
           });
     });
-  }
+  } */
 
   $scope.salvarComentario = function(comentario) {
     var usuario = JSON.parse(localStorage.usuario);    
@@ -72,11 +80,11 @@ appCtrl.controller('ChamadoCtrl', function($scope, $location, $state, $ionicPopu
     ChamadoAPI.salvarComentario($scope.comentario)
        .then(
       function(response) {
-        console.log("$scope.comentario.chamado.id: " + $scope.comentario.chamado.id);
-        ChamadoAPI.load($scope.comentario.chamado.id)
+        ChamadoAPI.loadComComentarios($scope.comentario.chamado.id)
         .then(
           function(response) {
             $scope.listComentario = response.data.listComentario;
+            $scope.comentario.descricao = "";
           }
         );
         //Ajustar atualização de listagem de comentários

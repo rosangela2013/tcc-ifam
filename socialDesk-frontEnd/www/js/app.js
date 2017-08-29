@@ -106,10 +106,21 @@ angular.module('starter', ['ionic','starter.config', 'starter.controllers','star
     views: {
       'menuContent' : {
         templateUrl : 'templates/criar-chamados.html',
-        controller : 'ChamadoCtrl'
+        controller : 'ChamadoFormCtrl'
       }
     }
   })
+
+  .state('menu.criar-chamados/:id', {
+    url: '/criar-chamados/:id',
+    views: {
+      'menuContent' : {
+        templateUrl : 'templates/criar-chamados.html',
+        controller : 'ChamadoFormCtrl'
+      }
+    }
+  })
+  
 
   .state('menu.meus-chamados', {
     url: '/meus-chamados',
