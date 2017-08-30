@@ -40,13 +40,17 @@
  <div class="list list-inset">
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Pesquisar...">
+      <input type="text" placeholder="Pesquisar..."
+      ng-model-options="{debounce: 600}" ng-model="filtro" ng-change="pesquisar(filtro)" >
     </label>
 </div>
 <div ng-if="loading" class="text-center">
 		<img src="img/loading-50.svg" />
 		<h5>Carregando...</h5>
 </div>
+
+<div class="alert alert-warning text-center" style="padding: 7px" ng-bind-html="mensagemAviso" ng-if="mensagemAviso"></div>
+
 <!-- <h1 class="title">CHAMADOS</h1> -->
 <div ng-show="!loading" class="list card"  ng-repeat="obj in chamados">
 

@@ -1,32 +1,33 @@
-    <!-- TELA INICIAL-->
-  <ion-view hide-nav-bar="true">
+<!-- TELA INICIAL-->
+<ion-view hide-nav-bar="true">
     <ion-content>
-      <div>
-        <img src="img/helpDesk.jpg" id="centro" />
-      </div>
-
-      <form ng-submit="doLogin(loginData)"> <br><br>
-        <div class="list">
-          <label class="item item-input">
-              <span class="input-label"><strong>Usuário</strong></span>
-              <input type="text" ng-model="loginData.email"  placeholder="Endereço de e-mail">
-            </label>
-
-          <label class="item item-input">
-              <span class="input-label"><strong>Senha<strong></span>
-              <input type="password" ng-model="loginData.senha"  placeholder="Senha">
-          </label>
-
-          <label class="item">
-              <button class="button button-block button-positive" type="submit">ENTRAR</button>
-            </label>
+        <div>
+            <img src="img/helpDesk.jpg" id="centro" />
         </div>
-        <div class="footer text-small text-center">
-         Não tem uma conta?
-          <a href="#/app/cadastrar-conta">Cadastre-se aqui!</a>
-          <br>
-          <a href="#/app/esqueci-senha">Esqueceu sua senha?</a>
-        </div>
-      </form>
+
+        <form ng-submit="doLogin(loginData)"> <br><br>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label"><strong>Usuário</strong></span>
+                    <input type="text" ng-model="loginData.email"  placeholder="Endereço de e-mail">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label"><strong>Senha<strong></span>
+                    <input type="password" ng-model="loginData.senha"  placeholder="Senha">
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">ENTRAR</button>
+                </label>
+            </div>
+
+            <div class="footer text-small text-center">
+                Não tem uma conta?
+                <a href="#/app/cadastrar-conta">Cadastre-se aqui!</a>
+                <br>
+                <!-- <a href="#/app/esqueci-senha">Esqueceu sua senha?</a>
+            </div> -->
+        </form>
     </ion-content>
-  </ion-view>
+</ion-view>

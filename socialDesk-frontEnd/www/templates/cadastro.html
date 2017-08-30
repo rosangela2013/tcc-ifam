@@ -1,29 +1,38 @@
 <ion-view view-title=" ">
-  <ion-content>
+    <ion-content>
 
-  <div class="col col-center text-center">
-    <h4 class="gray">Crie sua conta grátis</h4>
-  </div>
+        <div class="col col-center text-center">
+            <h4 class="gray">Crie sua conta grátis</h4>
+        </div>
 
-   <form ng-submit="cadastro()">
-    <div class="list">
+        <form ng-submit="cadastro()">
+            <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label field-required"><strong>Primeiro Nome</strong></span>
-          <input type="text" placeholder="Daniela" required>
+          <input type="text" ng-model="" placeholder="Primeiro Nome" required>
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label field-required"><strong>Último Nome</strong></span>
-          <input type="text" placeholder="Alecrim" required>
+          <input type="text" ng-model="" placeholder="Sobrenome" required>
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label field-required"><strong>E-mail</strong></span>
-          <input type="text" placeholder="daniela.alecrim@gmail.com" required>
+          <input type="text" ng-model="" placeholder="Endereço de e-mail" required>
         </label>
-        <label class="item item-input">
+
+                <div class="item item-icon-left">
+                    <label for="selecao-arquivo">
+                <i class="icon ion-camera" id="foto"></i>
+                 <label onclick="document.getElementById('selecao-arquivo').click()">Inserir imagem</label>
+                    </label>
+                    <input type="file" id="selecao-arquivo" ng-model="arquivo" style="display: none;" base-sixty-four-input>
+                </div>
+
+                <label class="item item-input">
               <span class="input-label"><strong>Data de Nascimento</strong><br>
               <input type="date" ng-model="intro.dob" name="dob" placeholder="dd/mm/aaaa" required>
         </label>
-        <label class="item item-input item-stacked-label" >
+                <label class="item item-input item-stacked-label">
            <strong>Sexo</strong>
                 <ion-radio>
                     Masculino
@@ -32,10 +41,11 @@
                     Feminino
                 </ion-radio>
         </label>
-        <label class="item">
-              <button class="button button-block button-positive" type="submit">CADASTRAR</button>
+                <label class="item">
+                <button class="button button-block button-positive" ng-click="salvar(arquivo);" type="submit">CADASTRAR</button>
+                </label>
         </label>
-      </div>
-    </form>
-  </ion-content>
+            </div>
+        </form>
+    </ion-content>
 </ion-view>
