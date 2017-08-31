@@ -5,8 +5,13 @@ appService.factory("UsuarioAPI",
             return $http.post(constants.BASE_URL + "/usuarios", usuario);
         };
 
+        var _getUsuarioLogado = function() {
+            return angular.json(window.localStorage.getItem('usuario'));
+        }
+
         return {
-            cadastro: _cadastro
+            cadastro: _cadastro,
+            getUsuarioLogado: _getUsuarioLogado
         };
 
     }]);

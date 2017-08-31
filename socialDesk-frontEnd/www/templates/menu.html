@@ -24,11 +24,11 @@
 						<!-- <img ng-if="fotoUsuarioLogado" ng-src="{{getImage(fotoUsuarioLogado.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
                             <h2>{{usuarioLogado.nome}}</h2>
                             <p>{{usuarioLogado.email}}</p> -->
-						<img src="img/ROSANGELA3.jpg">
+						<img src="{{'data:image/jpeg;base64,' + usuarioLogado.fotoUsuarioBase64}}">
 						<!-- Exibir nome do usuário que vem do localStorage -->
-						<h2>Rosangela </h2>
+						<h2>{{usuarioLogado.nome}} </h2>
 
-						<p>rosangela.alecrim2013@gmail.com</p>
+						<p>{{usuarioLogado.email}}</p>
 
 					</div>
 

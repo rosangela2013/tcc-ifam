@@ -1,5 +1,5 @@
 
-appCtrl.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, $location, $state, LoginAPI) {
+appCtrl.controller('AppCtrl', function ($rootScope, $scope, $ionicModal, $ionicPopup, $timeout, $location, $state, LoginAPI) {
 
     $scope.loginData = {};
 
@@ -20,12 +20,14 @@ appCtrl.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopup, $timeo
     $scope.login = function () {
         // $scope.modal.show();
     };
+  
 
     // Execute a ação de login quando o usuário envia o formulário de login
     $scope.doLogin = function (loginData) {
         LoginAPI.login(loginData).then(
             function (response) {
                 window.localStorage.setItem('usuario', JSON.stringify(response.data));
+                $rootScope.usuarioLogado = response.data;
                 $state.go('menu.chamados');
             }
         ).catch(function (erro) {

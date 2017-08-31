@@ -68,6 +68,7 @@ angular.module('starter', ['ionic', 'starter.config', 'starter.controllers', 'st
             .state('menu', {
                 url: '/menu',
                 abstract: true,
+                controller: 'MenuCtrl',
                 templateUrl: 'templates/menu.html'/*,
                 resolve : {
                     usuarioLogado: ['$route', 'UsuarioAPI', function($route, UsuarioAPI) {
