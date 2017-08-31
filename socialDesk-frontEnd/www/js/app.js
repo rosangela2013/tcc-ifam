@@ -48,8 +48,8 @@ angular.module('starter', ['ionic', 'starter.config', 'starter.controllers', 'st
                 url: '/cadastrar-conta',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/cadastro.html',
-                        controller: 'AppCtrl'
+                        templateUrl: 'templates/usuario.html',
+                        controller: 'UsuarioCtrl'
                     }
                 }
             })
@@ -64,11 +64,16 @@ angular.module('starter', ['ionic', 'starter.config', 'starter.controllers', 'st
                 }
             })
 
-
+        //TODO obter usuario logado
             .state('menu', {
                 url: '/menu',
                 abstract: true,
-                templateUrl: 'templates/menu.html'
+                templateUrl: 'templates/menu.html'/*,
+                resolve : {
+                    usuarioLogado: ['$route', 'UsuarioAPI', function($route, UsuarioAPI) {
+                        return UsuarioAPI.getByNome(JSON.parse(window.localStorage.getItem('usuario')));
+                    }] 
+                }*/
             })
 
             .state('menu.chamados', {

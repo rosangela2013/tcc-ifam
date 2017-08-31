@@ -5,7 +5,6 @@ appCtrl.controller('ChamadoCtrl', function ($scope, $location, $state, $ionicPop
 
     $scope.chamado = {};
 
-
     $scope.arquivo = {};
 
     $scope.listComentario = {};
@@ -68,8 +67,7 @@ appCtrl.controller('ChamadoCtrl', function ($scope, $location, $state, $ionicPop
         if (data) {
             return 'data:image/jpeg;base64,' + data;
         } else {
-            //TODO Corrigir retorno
-            return optSrc;
+             return optSrc;
         }
     }
 

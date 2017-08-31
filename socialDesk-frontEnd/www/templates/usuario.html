@@ -1,0 +1,58 @@
+<ion-view view-title=" ">
+    <ion-content>
+        <div class="col col-center text-center">
+            <h4 class="gray">Crie sua conta grátis</h4>
+        </div>
+
+        <form ng-submit="salvar(usuario,arqFoto)">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label field-required"><strong>Primeiro Nome</strong></span>
+                    <input type="text" ng-model="usuario.nomeUsuario" placeholder="Primeiro Nome" required>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label field-required"><strong>Último Nome</strong></span>
+                    <input type="text" ng-model="usuario.sobrenome" placeholder="Sobrenome" required>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                        <span class="input-label field-required"><strong>Senha</strong></span>
+                        <input type="password" ng-model="usuario.senha" placeholder="Senha" required>
+                    </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label field-required"><strong>E-mail</strong></span>
+                    <input type="text" ng-model="usuario.email" placeholder="Endereço de e-mail" required>
+                </label>
+                
+                <label class="item item-input">
+                    <span class="input-label"><strong>Data de Nascimento</strong><br>
+                    <input type="date" ng-model="usuario.dataNascimento" placeholder="dd/mm/aaaa" required>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <strong>Sexo</strong>
+
+                    <ion-list>
+                        <ion-radio ng-model="usuario.sexo" ng-value="'M'">Masculino</ion-radio>
+                        <ion-radio ng-model="usuario.sexo" ng-value="'F'">Feminino</ion-radio>
+                    </ion-list>
+                </label>
+
+                <div class="item item-icon-left">
+                    <label for="selecao-foto">
+                        <i class="icon ion-camera" id="foto"></i>
+                        <label onclick="document.getElementById('selecao-foto').click()">Inserir imagem</label>
+                    </label>
+                    
+                    <input type="file" id="selecao-foto" ng-model="arqFoto" style="display: none;" base-sixty-four-input>
+                </div>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">CADASTRAR</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
