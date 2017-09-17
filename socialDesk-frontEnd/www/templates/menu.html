@@ -24,7 +24,7 @@
 						<!-- <img ng-if="fotoUsuarioLogado" ng-src="{{getImage(fotoUsuarioLogado.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
                             <h2>{{usuarioLogado.nome}}</h2>
                             <p>{{usuarioLogado.email}}</p> -->
-						<img src="{{'data:image/jpeg;base64,' + usuarioLogado.fotoUsuarioBase64}}">
+						<img src="{{'data:image/jpeg;base64,' + usuarioLogado.fotoUsuarioBase64}}" onerror="this.src ='img/no-photo.png'">
 						<!-- Exibir nome do usuário que vem do localStorage -->
 						<h2>{{usuarioLogado.nome}} </h2>
 
