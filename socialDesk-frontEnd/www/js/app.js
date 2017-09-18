@@ -133,7 +133,7 @@ angular.module('starter', ['ionic', 'starter.config', 'starter.controllers', 'st
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/meus-chamados.html',
-                        controller: 'ChamadoCtrl'
+                        controller: 'MeusChamadosCtrl'
                     }
                 }
             })

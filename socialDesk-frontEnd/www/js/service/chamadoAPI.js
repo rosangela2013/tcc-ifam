@@ -8,6 +8,7 @@ appService.factory('ChamadoAPI', function($http, constants){
     api.list = list;
     api.listPorCategoria = listPorCategoria;
     api.listPorNomeUsuario = listPorNomeUsuario;
+    api.listPorUsuario = listPorUsuario;
     api.excluir = excluir;
     api.salvar = salvar;
     api.atualizar = atualizar;
@@ -36,6 +37,10 @@ appService.factory('ChamadoAPI', function($http, constants){
 
     function listPorNomeUsuario(nomeUsuario) {
         return $http.get(baseURL + "/listPorNomeUsuario/"+nomeUsuario);
+    }
+
+    function listPorUsuario(id) {
+        return $http.get(baseURL + "/listPorUsuario/"+id);
     }
 
     function excluir(id) {
