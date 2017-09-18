@@ -28,7 +28,7 @@ appCtrl.controller('AppCtrl', function ($rootScope, $scope, $ionicModal, $ionicP
             function (response) {
                 window.localStorage.setItem('usuario', JSON.stringify(response.data));
                 $rootScope.usuarioLogado = response.data;
-                $state.go('menu.chamados');
+                $state.go('menu.meus-chamados');
             }
         ).catch(function (erro) {
             $ionicPopup.alert({
