@@ -57,42 +57,19 @@ appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionic
          $scope.chamado.foto = arquivo.base64;
 
          var idChamado = $scope.idChamado;
+        $scope.chamado.idChamado = idChamado;
 
-         if (idChamado) {
-           var payload = {
-             descricao : $scope.chamado.descricao,
-             categoria: {id: $scope.chamado.idCategoria} 
-            };
-            ChamadoAPI.atualizar(idChamado, payload)
-              .then(
-              function(response) {
-                  $state.go('menu.chamados');
-                
-              }
-            ).catch(function(erro){
+        ChamadoAPI.salvar($scope.chamado).then(
+          function(response) {
+            $state.go('menu.meus-chamados');
+          }, 
+          function(error) {
             $ionicPopup.alert({
-                    title: 'Erro',
-                    template: erro.data[0].message
-                  }).then(function(){
-                    
-                  });
+              title: 'Erro',
+              template: error.data[0].message
             });
-         } else {
-            ChamadoAPI.salvar($scope.chamado)
-              .then(
-              function(response) {
-                $state.go('menu.meus-chamados');
-                
-              }
-            ).catch(function(erro){
-            $ionicPopup.alert({
-                    title: 'Erro',
-                    template: erro.data[0].message
-                  }).then(function(){
-                    
-                  });
-            });
-         }
+          }
+        );
       }
     
       $ionicModal.fromTemplateUrl('my-modal.html', {

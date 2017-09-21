@@ -11,7 +11,6 @@ appService.factory('ChamadoAPI', function($http, constants){
     api.listPorUsuario = listPorUsuario;
     api.excluir = excluir;
     api.salvar = salvar;
-    api.atualizar = atualizar;
     api.salvarComentario = salvarComentario;
     api.loadComComentarios = loadComComentarios;
     api.atualizaQtdeLike = atualizaQtdeLike;
@@ -49,10 +48,6 @@ appService.factory('ChamadoAPI', function($http, constants){
 
     function salvar(chamado) {
         return $http.post(baseURL, chamado);
-    };
-
-    function atualizar(idChamado, chamado) {
-        return $http.put(baseURL + "/" + idChamado, chamado);
     };
 
     function salvarArquivoChamado(arquivoChamado){
