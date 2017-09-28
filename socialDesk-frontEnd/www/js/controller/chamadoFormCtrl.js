@@ -12,7 +12,7 @@ appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionic
       $scope.listComentario = {};
     
       function init() {
-       
+        // alert($stateParams.chamado.idChamado);
         var idChamado = $stateParams.id;
         $scope.idChamado = idChamado;
 
@@ -22,14 +22,16 @@ appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionic
         var usuario = JSON.parse(localStorage.usuario);
         $scope.usuarioLogado = usuario;
         //Recupera foto de usuário através do parâmetro usuario.id;
-        FotoUsuarioAPI.getByUsuario(usuario.id)
+      /*   FotoUsuarioAPI.getByUsuario(usuario.id)
         .then(function(response){
           $scope.fotoUsuarioLogado = response.data;
-        });
+        }); */
 
         if (idChamado) {
            ChamadoAPI.load(idChamado).then(function(response) {
             var chamado =  response.data;
+
+            $scope.fotoUsuarioLogado = chamado.usuario.foto;
 
             $scope.chamado = {
                 idCategoria : chamado.categoria.id,

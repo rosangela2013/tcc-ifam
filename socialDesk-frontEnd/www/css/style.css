@@ -86,3 +86,33 @@ body {
 .alert-warning .alert-link {
   color: #66512c;
 }
+
+.ion-thumbsup:before {
+  color: black;
+  font-size: 2em;
+}
+
+.ion-edit:before {
+  color: black;
+  font-size: 2em;
+}
+
+.ion-chatbox:before {
+  color: black;
+  font-size: 1.5em;
+}
+
+.ion-edit:before {
+  color: black;
+  font-size: 1.5em;
+}
+
+.ion-close-circled {
+  color: black;
+  font-size: 1.5em;
+}
+
+.ion-checkmark-circled {
+  color: black;
+  font-size: 1.5em;
+}

@@ -3,7 +3,7 @@
       <!-- <h1 class="title">CHAMADOS</h1> -->
           <div class="list card">
             <div class="item item-avatar">
-              <img ng-if="fotoUsuarioLogado" ng-src="{{getImage(fotoUsuarioLogado.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
+              <img ng-if="fotoUsuarioLogado" ng-src="{{getImage(fotoUsuarioLogado)}}" onerror="this.src ='img/no-photo.png'">
               
               <h2>{{usuarioLogado.nome}}</h2>
               <p>{{dataAtual | date: 'dd/MM/yyyy'}}</p>

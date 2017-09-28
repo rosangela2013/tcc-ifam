@@ -13,7 +13,8 @@ appService.factory('ChamadoAPI', function($http, constants){
     api.salvar = salvar;
     api.salvarComentario = salvarComentario;
     api.loadComComentarios = loadComComentarios;
-    api.atualizaQtdeLike = atualizaQtdeLike;
+    api.curtir = curtir;
+    api.encerrar = encerrar;
     
     ///////////////////////////
 
@@ -58,8 +59,12 @@ appService.factory('ChamadoAPI', function($http, constants){
         return $http.post(baseURL + "/comentario", comentario);
     };
 
-    function atualizaQtdeLike(chamado) {
-        return $http.put(baseURL + "/atualizaQtdeLike", chamado);
+    function curtir(idChamado) {
+        return $http.put(baseURL + "/curtir/" + idChamado);
+    };
+
+    function encerrar(idChamado) {
+        return $http.put(baseURL + "/fecharChamado/" + idChamado);
     };
 
     return api;

@@ -6,11 +6,19 @@
         <ion-header-bar>
             <button class="button button-icon icon ion-ios-close-outline" 
             ng-click="closeModal()"></button><h1 class="title">Comentários</h1>
-         
         </ion-header-bar>
+
         <ion-content>
             <!-- <h1 class="title">COMENTARIOS</h1> -->
             <div class="list card">
+                <div class="item item-avatar">
+                    <img ng-src="{{'data:image/jpeg;base64,' + chamado.usuario.foto}}" onerror="this.src ='img/no-photo.png'">
+                    <h2>Criado por {{chamado.usuario.nome}}</h2>
+                    <p>Em {{chamado.data}}</p>
+                    <p class="text-justify" style="white-space: normal;">
+                        {{chamado.descricao}}
+                    </p>
+                </div>
                 <label class="item item-input">
                   <textarea ng-model="comentario.descricao" rows="7" placeholder="Publicando comentário..."></textarea>
                 </label>
@@ -19,13 +27,12 @@
 
             <div class="list card" ng-repeat="obj in listComentario">
                 <div class="item item-avatar">
-                  <img ng-src="{{getImage(obj.fotoBase64)}}" onerror="this.src ='img/no-photo.png'">
-                  <h2>{{obj.usuario.nomeUsuario}}</h2>
-                  <p>{{obj.dataComentario | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+                  <img ng-src="{{getImage(obj.usuario.foto)}}" onerror="this.src ='img/no-photo.png'">
+                  <h2>{{obj.usuario.nome}}</h2>
+                  <p>Em {{obj.data}}</p>
+                  <p class="text-justify" style="white-space: normal;">{{obj.comentario}}</p>
                 </div>
-                <div class="item item-body">
-                  <p class="text-justify">{{obj.descricao}}</p> 
-                </div>
+                
              </div>
           <!--
             <div class="list card" ng-repeat="obj in listComentario">             
@@ -37,51 +44,60 @@
     </script>
 
 <ion-content>
- <div class="list list-inset">
-    <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Pesquisar por usuário..."
-      ng-model-options="{debounce: 600}" ng-model="filtro" ng-change="pesquisar(filtro)" >
-    </label>
-</div>
-<div ng-if="loading" class="text-center">
-		<img src="img/loading-50.svg" />
-		<h5>Carregando...</h5>
-</div>
+    <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Pesquisar por usuário..."
+          ng-model-options="{debounce: 600}" ng-model="filtro" ng-change="pesquisar(filtro)" >
+        </label>
+    </div>
+    <div ng-if="loading" class="text-center">
+        <img src="img/loading-50.svg" />
+        <h5>Carregando...</h5>
+    </div>
 
-<div class="alert alert-warning text-center" style="padding: 7px" ng-bind-html="mensagemAviso" ng-if="mensagemAviso"></div>
+    <div class="alert alert-warning text-center" style="padding: 7px" ng-bind-html="mensagemAviso" ng-if="mensagemAviso"></div>
 
-<!-- <h1 class="title">CHAMADOS</h1> -->
-<div ng-show="!loading" class="list card"  ng-repeat="obj in chamados">
+    <!-- <h1 class="title">CHAMADOS</h1> -->
+    <div ng-show="!loading" class="list card"  ng-repeat="obj in chamados">
 
-   <div class="item item-avatar">
-      <img ng-src="{{getImage(obj.urlFoto)}}" onerror="this.src ='img/no-photo.png'">
-      <h2>{{obj.chamado.usuario.nomeUsuario}}</h2>
-      <p>{{obj.chamado.dataCriacao | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
-   </div>
-
-   <div class="item item-body">
-    
-      <div class="text-center">
-          <div align="center">
-              <strong><a class="subdued" >{{obj.chamado.categoria.nomecategoria}}</a></strong>
+      <div class="item item-avatar">
+          <img ng-src="{{'data:image/jpeg;base64,' + obj.usuario.foto}}" onerror="this.src ='img/no-photo.png'">
+          <h2>Criado por {{obj.usuario.nome}}</h2>
+          <p>Em {{obj.data}}</p>
+          <div style=" position: absolute; top: 8px; right: 8px; font-size:1.6em; " ng-show="exibeIconeResolvido(obj)">
+            <i class="ion-checkmark" style="color: green !important;"></i>
           </div>
-          <img class="full-image" ng-src="{{getImage(obj.urlArquivo)}}">
       </div>
-      <p class="text-justify">
-        {{obj.chamado.descricao}}
-      </p>   
-      <!-- <div style="word-spacing: 7px;"> -->
-      <p>
-        <a ng-click="atualizaQtdeLike({{obj.chamado}})" class="subdued">{{obj.chamado.quantidadeCurtida}} {{obj.chamado.quantidadeCurtida > 1 ? 'Curtidas' : 'Curtir' }}</a>
-        <a ng-click="openModal(obj.listComentario,obj.chamado);" class="subdued">{{obj.qtdComentarios}} {{obj.qtdComentarios > 0 ? 'Comentário(s)' : 'Comentar'}}</a>
-        <a ng-if="obj.chamado.usuario.id == 1" ng-click="edit({{obj.chamado.id}})" class="subdued">Editar</a>
-        <a ng-if="obj.chamado.status.descricao != 'Fechado'" ng-click="excluir({{obj.chamado.id}})" class="subdued">Excluir</a>
-        <a class="subdued">{{obj.chamado.status.descricao}}</a>
-      </p>
-      <!-- </div> -->
-  </div>
-</div>
-</ion-content>
+
+      <div class="item item-body">
+        
+          <div class="text-center">
+              <div align="center">
+                  <strong><a class="subdued" >{{obj.categoria.descricao}}</a></strong>
+              </div>
+              <img class="full-image" ng-src="{{getImage(obj.imagem)}}">
+          </div>
+          <p class="text-justify">
+            {{obj.descricao}}
+          </p>   
+          <!-- <div style="word-spacing: 7px;"> -->
+          <p style="font-size: 0.8em;">
+              <a ng-click="curtir({{obj.idChamado}})" class="subdued"><i class="icon ion-thumbsup"> </i>Curtir</a>
+              <a ng-click="openModal(obj.listComentario, obj);" class="subdued"><i class="icon ion-chatbox"> </i>Comentar</a>
+              <a ng-if="exibeEditar(obj)" ng-click="edit(obj.idChamado, obj)" class="subdued"><i class="icon ion-edit"> </i>Editar</a>
+              <a ng-if="exibeFechar(obj)" ng-click="excluir({{obj.idChamado}})" class="subdued"><i class="icon ion-close-circled"> </i>Excluir</a>
+              <a ng-if="exibeEncerrar(obj)" ng-click="encerrar({{obj.idChamado}})" class="subdued"><i class="icon ion-checkmark-circled"> </i>Encerrar</a>
+          </p>
+          <p>
+              <span class="subdued">{{obj.curtidas}} Curtida(s)</a>
+              <span class="subdued">{{obj.comentarios}} Comentário(s)</a>
+          </p>
+
+          <!-- </div> --> 
+      </div>
+    </div>
+
+  </ion-content>
 </ion-view>
 
