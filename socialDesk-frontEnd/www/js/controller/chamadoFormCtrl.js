@@ -1,4 +1,4 @@
-appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionicModal, $stateParams, $ionicPopup, ChamadoAPI, FotoUsuarioAPI){
+appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionicModal, $stateParams, $ionicPopup, $ionicLoading, ChamadoAPI, FotoUsuarioAPI){
     
       $scope.idChamado;
       $scope.chamados = [];
@@ -63,6 +63,7 @@ appCtrl.controller('ChamadoFormCtrl', function($scope, $location, $state, $ionic
 
         ChamadoAPI.salvar($scope.chamado).then(
           function(response) {
+            $ionicLoading.show({ template: 'Chamado salvo com sucesso!', noBackdrop: true, duration: 2000 });
             $state.go('menu.meus-chamados');
           }, 
           function(error) {
